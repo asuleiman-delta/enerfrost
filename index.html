@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Enerfrost · Garantizamos continuidad operacional</title>
+<meta name="description" content="Energía temporal, de emergencia y de transición para la industria en Latinoamérica">
+<meta name="theme-color" content="#0B2A24">
+<link rel="icon" type="image/png" href="assets/logo-a4.png">
+<link rel="preload" as="video" href="assets/enerfrost-hero.webm" type="video/webm">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@400;500;600;700&display=swap">
+<style>
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg,#ffffff);font-family:'Mulish',system-ui,sans-serif;color:var(--ink,#1B2421);-webkit-font-smoothing:antialiased}
+a{color:var(--ink,#1B2421);text-decoration:none}
+a:hover{color:#006E5B}
+input::placeholder{color:#9A9D9C}
+footer *{transition:color 600ms ease,border-color 600ms ease}
+</style>
+</helmet>
+<div ref="{{ rootRef }}" style="position:relative;overflow:clip;font-family:'Mulish',system-ui,sans-serif;color:var(--ink,#1B2421);background:var(--bg,#ffffff);--gut:clamp(24px,7.8vw,112px);--rail:max(8px,calc(var(--gut) - 24px));--sec:clamp(64px,11vw,160px)">
+  <div ref="{{ loaderRef }}" aria-label="Cargando" style="position:fixed;inset:0;z-index:100;background:#0B2A24;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px">
+    <div data-lgrid="" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;-webkit-mask-image:radial-gradient(ellipse 55% 60% at 50% 50%,#000 15%,transparent 78%);mask-image:radial-gradient(ellipse 55% 60% at 50% 50%,#000 15%,transparent 78%)"></div>
+    <div data-lline="" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none"></div>
+    <img data-ll="" src="assets/logo-a4.png" alt="Enerfrost" style="position:relative;height:28px;width:auto;display:block">
+  </div>
+
+  <div aria-hidden="true" style="position:absolute;inset:0;z-index:1;pointer-events:none;display:{{ railsDisplay }}">
+    <div style="position:relative;max-width:1440px;height:100%;margin:0 auto">
+      <div ref="{{ railRef }}" style="position:absolute;top:0;bottom:0;left:var(--rail);width:1px;background:var(--line,rgba(27,36,33,.1))"></div>
+      <div ref="{{ railRRef }}" style="position:absolute;top:0;bottom:0;right:var(--rail);width:1px;background:var(--line,rgba(27,36,33,.1))"></div>
+    </div>
+  </div>
+
+  <div ref="{{ lineRef }}" aria-hidden="true" style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:3;overflow:hidden"></div>
+  <div ref="{{ fxRef }}" aria-hidden="true" style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:4;overflow:hidden"></div>
+
+  <header onMouseLeave="{{ closeMenu }}" style="--nv:{{ hdr.nv }};--lgd:{{ hdr.lgd }};--lgl:{{ hdr.lgl }};color:var(--nv);position:fixed;top:0;left:0;right:0;z-index:50;background:{{ hdr.bg }};backdrop-filter:{{ hdr.blur }};-webkit-backdrop-filter:{{ hdr.blur }};border-bottom:1px solid {{ hdr.line }};transition:background-color 250ms ease,border-color 250ms ease">
+    <div style="max-width:1440px;margin:0 auto;height:68px;padding:0 var(--gut);box-sizing:border-box;display:flex;align-items:center;gap:28px">
+      <a href="#top" aria-label="Enerfrost" style="display:flex;align-items:center;flex:none"><span style="position:relative;display:block"><img src="assets/logo-a6.png" alt="Enerfrost" style="height:20px;width:auto;display:block;opacity:var(--lgd,1);transition:opacity 300ms ease"><img src="assets/logo-a4.png" alt="" style="position:absolute;left:0;top:0;height:20px;width:auto;opacity:var(--lgl,0);transition:opacity 300ms ease"></span></a>
+      <sc-if value="{{ desk }}" hint-placeholder-val="{{ true }}">
+        <nav style="display:flex;align-items:center;gap:2px">
+          <button onMouseEnter="{{ openSol }}" onClick="{{ openSol }}" style="display:flex;align-items:center;gap:4px;height:36px;padding:0 10px;border-radius:6px;background:{{ nav.solBg }};border:0;font:inherit;font-size:14px;line-height:24px;font-weight:600;color:var(--nv,#1B2421);cursor:pointer;transition:background-color 150ms ease">Soluciones<span style="display:flex;color:#9A9D9C;transform:rotate({{ nav.solRot }});transition:transform 250ms cubic-bezier(0.23,1,0.32,1)">{{ ic.chev }}</span></button>
+          <button onMouseEnter="{{ openInd }}" onClick="{{ openInd }}" style="display:flex;align-items:center;gap:4px;height:36px;padding:0 10px;border-radius:6px;background:{{ nav.indBg }};border:0;font:inherit;font-size:14px;line-height:24px;font-weight:600;color:var(--nv,#1B2421);cursor:pointer;transition:background-color 150ms ease">Industrias<span style="display:flex;color:#9A9D9C;transform:rotate({{ nav.indRot }});transition:transform 250ms cubic-bezier(0.23,1,0.32,1)">{{ ic.chev }}</span></button>
+          <a href="#presencia" onMouseEnter="{{ closeMenu }}" style="display:flex;align-items:center;height:36px;padding:0 10px;border-radius:6px;font-size:14px;line-height:24px;font-weight:600;color:var(--nv,#1B2421)" style-hover="background:rgba(27,36,33,.05);color:var(--nv,#1B2421)">Nosotros</a>
+          <a href="#" onMouseEnter="{{ closeMenu }}" style="display:flex;align-items:center;height:36px;padding:0 10px;border-radius:6px;font-size:14px;line-height:24px;font-weight:600;color:var(--nv,#1B2421)" style-hover="background:rgba(27,36,33,.05);color:var(--nv,#1B2421)">Novedades</a>
+        </nav>
+        <div onMouseEnter="{{ closeMenu }}" style="margin-left:auto;display:flex;align-items:center;gap:16px">
+          <div style="display:flex;align-items:center;gap:4px;font-size:13px;font-weight:600"><span style="color:var(--nv,#1B2421)">ES</span><span style="color:#B8BAB9">/</span><span style="color:#9A9D9C">EN</span></div>
+          <button style="display:flex;align-items:center;gap:6px;height:36px;padding:0 8px;border-radius:6px;background:none;border:0;font:inherit;font-size:13px;font-weight:600;color:var(--nv,#1B2421);cursor:pointer"><img src="https://flagcdn.com/cl.svg" alt="" style="width:18px;height:12px;object-fit:cover;border-radius:2px">Chile<span style="display:flex;color:#9A9D9C">{{ ic.chev }}</span></button>
+          <a href="#contacto" style="display:inline-flex;align-items:center;height:36px;padding:0 12px;border-radius:5px;font-size:14px;line-height:24px;font-weight:600;letter-spacing:-.01em;color:#04231D;background:linear-gradient(180deg,#00C7A9,#00B096);box-shadow:0 1px 1px rgba(4,35,29,.2),0 2px 4px -2px rgba(4,35,29,.4),0 1px 5px -2px rgba(4,35,29,.4),0 0 0 1px #00A68D,inset 0 1px .5px rgba(255,255,255,.3),inset 0 0 0 100px rgba(255,255,255,0);transition:box-shadow 160ms ease" style-hover="color:#04231D;box-shadow:0 1px 1px rgba(4,35,29,.2),0 2px 4px -2px rgba(4,35,29,.4),0 1px 5px -2px rgba(4,35,29,.4),0 0 0 1px #00A68D,inset 0 1px .5px rgba(255,255,255,.3),inset 0 0 0 100px rgba(255,255,255,.14)" style-active="box-shadow:0 1px 1px rgba(4,35,29,.2),0 0 0 1px #00A68D,inset 0 0 0 100px rgba(0,60,50,.1)">Hablemos de tu operación</a>
+        </div>
+      </sc-if>
+      <sc-if value="{{ mob }}" hint-placeholder-val="{{ false }}">
+        <button onClick="{{ toggleMobile }}" aria-label="Menú" style="margin-left:auto;width:44px;height:44px;margin-right:-10px;display:flex;align-items:center;justify-content:center;background:none;border:0;color:var(--nv,#1B2421);cursor:pointer;padding:0">{{ burger }}</button>
+      </sc-if>
+    </div>
+
+    <sc-if value="{{ menuSol }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;left:0;right:0;top:68px;padding:8px var(--gut) 0">
+        <div style="--nv:#1B2421;--ink:#1B2421;--mut:#686666;--bg:#ffffff;--bg2:#F7F7F8;--line:rgba(27,36,33,.1);color:#1B2421;max-width:1216px;margin:0 auto 16px;background:var(--bg,#ffffff);border-radius:14px;box-shadow:0 0 0 1px rgba(27,36,33,.06),0 18px 44px -14px rgba(27,36,33,.28);padding:12px;display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:12px">
+          <div style="padding:12px;display:flex;flex-direction:column;gap:4px">
+            <a data-arrow="" href="#soluciones" style="display:inline-flex;align-items:center;gap:4px;font-size:13px;line-height:20px;font-weight:600;color:var(--mut,#686666);margin-bottom:8px">Soluciones de energía{{ ic.arrow }}</a>
+            <sc-for list="{{ solutions }}" as="s" hint-placeholder-count="3">
+              <a href="#soluciones" style="display:flex;gap:12px;align-items:flex-start;padding:10px;margin:0 -10px;border-radius:8px;color:var(--nv,#1B2421)" style-hover="background:var(--bg2,#F7F7F8);color:var(--nv,#1B2421)">
+                <span style="width:36px;height:36px;flex:none;border-radius:10px;background:linear-gradient(145deg,#FFFFFF,#EEF0EF);box-shadow:4px 4px 10px rgba(27,36,33,.08),-4px -4px 10px #ffffff;display:flex;align-items:center;justify-content:center;color:#006E5B">{{ s.iconSm }}</span>
+                <span style="display:flex;flex-direction:column"><span style="font-size:14px;line-height:24px;font-weight:600">{{ s.n }}</span><span style="font-size:13px;line-height:20px;color:var(--mut,#686666)">{{ s.d }}</span></span>
+              </a>
+            </sc-for>
+          </div>
+          <div style="padding:12px;display:flex;flex-direction:column;gap:12px">
+            <span style="font-size:13px;line-height:20px;font-weight:600;color:var(--mut,#686666)">Tecnologías</span>
+            <div style="display:flex;flex-wrap:wrap;gap:6px">
+              <sc-for list="{{ techs }}" as="t" hint-placeholder-count="9">
+                <a href="#tecnologias" style="font-size:12px;line-height:20px;font-weight:600;color:#4A4F4D;padding:2px 10px;border-radius:999px;background:rgba(27,36,33,.06)" style-hover="background:rgba(0,192,163,.14);color:#006E5B">{{ t.n }}</a>
+              </sc-for>
+            </div>
+            <span style="margin-top:12px;font-size:13px;line-height:20px;font-weight:600;color:var(--mut,#686666)">Servicios</span>
+            <a href="#tecnologias" style="display:flex;flex-direction:column;color:var(--nv,#1B2421)"><span style="font-size:14px;line-height:24px;font-weight:600">Operación y mantenimiento</span><span style="font-size:13px;line-height:20px;color:var(--mut,#686666)">Instalamos, operamos y mantenemos en tu faena</span></a>
+            <a href="#tecnologias" style="display:flex;flex-direction:column;color:var(--nv,#1B2421)"><span style="font-size:14px;line-height:24px;font-weight:600">Servicios complementarios</span><span style="font-size:13px;line-height:20px;color:var(--mut,#686666)">Ingeniería, montaje y logística asociada</span></a>
+          </div>
+          <a href="#soluciones" style="display:flex;flex-direction:column;border-radius:8px;overflow:hidden;background:var(--bg2,#F7F7F8);color:var(--nv,#1B2421)" style-hover="background:#EEEFEF;color:var(--nv,#1B2421)">
+            <img src="assets/foto-operador.png" alt="" style="width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center 30%;display:block">
+            <span style="padding:14px 16px 16px;display:flex;flex-direction:column;gap:2px"><span style="font-size:14px;line-height:24px;font-weight:600">Llave en mano y sin inversión de capital</span><span style="font-size:13px;line-height:20px;color:var(--mut,#686666)">Conoce el modelo</span></span>
+          </a>
+        </div>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ menuInd }}" hint-placeholder-val="{{ false }}">
+      <div style="position:absolute;left:0;right:0;top:68px;padding:8px var(--gut) 0">
+        <div style="--nv:#1B2421;--ink:#1B2421;--mut:#686666;--bg:#ffffff;--bg2:#F7F7F8;--line:rgba(27,36,33,.1);color:#1B2421;max-width:1216px;margin:0 auto 16px;background:var(--bg,#ffffff);border-radius:14px;box-shadow:0 0 0 1px rgba(27,36,33,.06),0 18px 44px -14px rgba(27,36,33,.28);padding:20px;display:flex;flex-direction:column;gap:16px">
+          <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px">
+            <sc-for list="{{ industries }}" as="d" hint-placeholder-count="5">
+              <a href="#industrias" onClick="{{ d.pick }}" style="display:flex;flex-direction:column;gap:10px;padding:8px;border-radius:8px;color:var(--nv,#1B2421)" style-hover="background:var(--bg2,#F7F7F8);color:var(--nv,#1B2421)">
+                <img src="{{ d.img }}" alt="" style="width:100%;aspect-ratio:4/3;object-fit:cover;object-position:{{ d.pos }};border-radius:6px;display:block">
+                <span style="display:flex;flex-direction:column"><span style="font-size:14px;line-height:24px;font-weight:600">{{ d.n }}</span><span style="font-size:13px;line-height:20px;color:var(--mut,#686666)">{{ d.d }}</span></span>
+              </a>
+            </sc-for>
+          </div>
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 8px 0;border-top:1px solid rgba(27,36,33,.08)">
+            <span style="font-size:13px;line-height:20px;color:var(--mut,#686666)">Casos por industria y país, con la solución aplicada en cada operación</span>
+            <a data-arrow="" href="#industrias" style="display:inline-flex;align-items:center;gap:4px;font-size:14px;line-height:24px;font-weight:600">Ver catálogo de proyectos{{ ic.arrow }}</a>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+  </header>
+
+  <sc-if value="{{ backdrop }}" hint-placeholder-val="{{ false }}">
+    <div onMouseEnter="{{ closeMenu }}" onClick="{{ closeMenu }}" style="position:fixed;inset:0;z-index:45;background:rgba(11,42,36,.45);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)"></div>
+  </sc-if>
+
+  <sc-if value="{{ mobileMenu }}" hint-placeholder-val="{{ false }}">
+    <div style="position:fixed;left:0;right:0;top:68px;bottom:0;z-index:49;--ink:#1B2421;--mut:#686666;--bg:#ffffff;--bg2:#F7F7F8;--line:rgba(27,36,33,.1);background:rgba(255,255,255,.82);backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);overflow:auto;padding:8px 24px 32px;display:flex;flex-direction:column;border-top:1px solid var(--line,rgba(27,36,33,.1))">
+      <button onClick="{{ accSol }}" style="display:flex;align-items:center;justify-content:space-between;height:56px;background:none;border:0;border-bottom:1px solid var(--line,rgba(27,36,33,.1));font:inherit;font-size:18px;font-weight:600;letter-spacing:-.01em;color:var(--ink,#1B2421);padding:0;cursor:pointer">Soluciones<span style="display:flex;color:#9A9D9C;transform:rotate({{ mm.solRot }});transition:transform 360ms cubic-bezier(0.77,0,0.175,1)">{{ ic.chev }}</span></button>
+      <div style="display:grid;grid-template-rows:{{ mm.solRows }};transition:grid-template-rows 360ms cubic-bezier(0.77,0,0.175,1)">
+        <div style="overflow:hidden;min-height:0">
+          <div style="display:flex;flex-direction:column;padding:8px 0 12px">
+            <sc-for list="{{ solutions }}" as="s" hint-placeholder-count="3">
+              <a href="#soluciones" style="display:flex;align-items:center;gap:10px;min-height:44px;font-size:15px;font-weight:600;color:var(--ink,#1B2421)"><span style="display:flex;color:#006E5B">{{ s.iconSm }}</span>{{ s.n }}</a>
+            </sc-for>
+            <a href="#tecnologias" style="display:flex;align-items:center;min-height:44px;font-size:15px;font-weight:600;color:var(--ink,#1B2421)">Tecnologías</a>
+            <a href="#tecnologias" style="display:flex;align-items:center;min-height:44px;font-size:15px;font-weight:600;color:var(--ink,#1B2421)">Operación y mantenimiento</a>
+          </div>
+        </div>
+      </div>
+      <button onClick="{{ accInd }}" style="display:flex;align-items:center;justify-content:space-between;height:56px;background:none;border:0;border-bottom:1px solid var(--line,rgba(27,36,33,.1));font:inherit;font-size:18px;font-weight:600;letter-spacing:-.01em;color:var(--ink,#1B2421);padding:0;cursor:pointer">Industrias<span style="display:flex;color:#9A9D9C;transform:rotate({{ mm.indRot }});transition:transform 360ms cubic-bezier(0.77,0,0.175,1)">{{ ic.chev }}</span></button>
+      <div style="display:grid;grid-template-rows:{{ mm.indRows }};transition:grid-template-rows 360ms cubic-bezier(0.77,0,0.175,1)">
+        <div style="overflow:hidden;min-height:0">
+          <div style="display:flex;flex-direction:column;padding:8px 0 12px">
+            <sc-for list="{{ industries }}" as="d" hint-placeholder-count="5">
+              <a href="#industrias" onClick="{{ d.pickClose }}" style="display:flex;align-items:center;gap:10px;min-height:44px;font-size:15px;font-weight:600;color:var(--ink,#1B2421)"><span style="display:flex;color:#006E5B">{{ d.iconSm }}</span>{{ d.n }}</a>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+      <a href="#presencia" onClick="{{ toggleMobile }}" style="display:flex;align-items:center;height:56px;border-bottom:1px solid var(--line,rgba(27,36,33,.1));font-size:18px;font-weight:600;color:var(--ink,#1B2421)">Nosotros</a>
+      <a href="#" style="display:flex;align-items:center;height:56px;border-bottom:1px solid var(--line,rgba(27,36,33,.1));font-size:18px;font-weight:600;color:var(--ink,#1B2421)">Novedades</a>
+      <a href="#contacto" onClick="{{ toggleMobile }}" style="margin-top:28px;display:flex;align-items:center;justify-content:center;height:48px;border-radius:6px;font-size:15px;font-weight:600;color:#04231D;background:linear-gradient(180deg,#00C7A9,#00B096);box-shadow:0 1px 1px rgba(4,35,29,.2),0 2px 4px -2px rgba(4,35,29,.4),0 0 0 1px #00A68D,inset 0 1px .5px rgba(255,255,255,.3)">Hablemos de tu operación</a>
+      <div style="margin-top:auto;padding-top:32px;display:flex;align-items:center;justify-content:space-between;font-size:14px;font-weight:600">
+        <div style="display:flex;gap:8px"><span style="color:var(--ink,#1B2421)">ES</span><span style="color:#B8BAB9">/</span><span style="color:#9A9D9C">EN</span></div>
+        <span style="display:flex;align-items:center;gap:8px"><img src="https://flagcdn.com/cl.svg" alt="" style="width:18px;height:12px;object-fit:cover;border-radius:2px">Chile</span>
+      </div>
+    </div>
+  </sc-if>
+
+  <section id="top" ref="{{ heroRef }}" data-screen-label="01 Hero" style="position:relative;background:var(--bg2,#F7F7F8);overflow:hidden;--hi:#ffffff;--hm:rgba(255,255,255,.72);--hh:#00C0A3;--tb:rgba(255,255,255,.08);--tc:#BFF3EA;--ts:inset 0 1px 0 rgba(255,255,255,.12),0 0 0 1px rgba(255,255,255,.16);--sb:rgba(255,255,255,.08);--sc:#ffffff;--ss:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 1px rgba(255,255,255,.2);--gs:rgba(0,192,163,.2);--gc:rgba(0,192,163,.55)">
+    <div data-hfill="" aria-hidden="true" style="position:absolute;inset:0;background:#0B2A24;pointer-events:none"></div>
+    <div ref="{{ gridHostRef }}" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none"></div>
+    <svg viewBox="0 0 1440 750" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;fill:none;pointer-events:none">
+      <g style="stroke:rgba(0,166,141,.28);stroke-width:1">
+        <path d="M1440 160 H1190 L1110 240 H880"></path>
+        <path d="M1440 290 H1250 L1170 370 H990 L950 410 H780"></path>
+        <path d="M1440 500 H1290 L1230 440 H1030"></path>
+        <path d="M1310 0 V100 L1250 160 V320"></path>
+        <path d="M1440 620 H1130 L1070 680 H840 L770 750"></path>
+      </g>
+      <g style="stroke:#00C0A3;stroke-width:1.6;stroke-linecap:round">
+        <path data-pulse="" d="M1440 160 H1190 L1110 240 H880"></path>
+        <path data-pulse="" d="M1440 290 H1250 L1170 370 H990 L950 410 H780"></path>
+        <path data-pulse="" d="M1440 500 H1290 L1230 440 H1030"></path>
+        <path data-pulse="" d="M1310 0 V100 L1250 160 V320"></path>
+        <path data-pulse="" d="M1440 620 H1130 L1070 680 H840 L770 750"></path>
+      </g>
+      <g style="fill:#00C0A3">
+        <circle cx="880" cy="240" r="3"></circle><circle cx="780" cy="410" r="3"></circle><circle cx="1030" cy="440" r="3"></circle><circle cx="1250" cy="320" r="3"></circle><circle cx="1110" cy="240" r="2"></circle><circle cx="1170" cy="370" r="2"></circle>
+      </g>
+    </svg>
+    <div style="position:relative;max-width:1440px;margin:0 auto;min-height:100svh;padding:calc(68px + clamp(40px,5vw,64px)) var(--gut) clamp(48px,5vw,64px);box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:56px 40px">
+      <div style="flex:1 1 400px;max-width:560px;display:flex;flex-direction:column;align-items:flex-start">
+        <span data-hero="tag" data-node="" style="font-size:11px;line-height:18px;letter-spacing:.02em;font-weight:600;color:var(--tc,#4A4F4D);padding:3px 12px;border-radius:999px;background:var(--tb,rgba(255,255,255,.62));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:var(--ts,inset 0 1px 0 #ffffff,0 0 0 1px rgba(27,36,33,.08),0 1px 3px rgba(27,36,33,.06));transition:color 600ms ease,background-color 600ms ease,box-shadow 600ms ease">No entregamos equipos</span>
+        <h1 data-hero="h1" style="margin:18px 0 0;font-size:clamp(36px,calc(4.5vw + 6px),64px);line-height:1;letter-spacing:-.035em;font-weight:600;color:var(--hi,#1B2421);transition:color 600ms ease;text-wrap:balance">Garantizamos <span style="color:var(--hh,#009C85);transition:color 600ms ease">continuidad operacional</span></h1>
+        <p data-hero="lede" style="margin:20px 0 0;max-width:429px;font-size:17px;line-height:26px;letter-spacing:-.015em;color:var(--hm,#686666);transition:color 600ms ease">Energía temporal, de emergencia y de transición para la industria en Latinoamérica</p>
+        <div data-hero="cta" style="display:flex;flex-wrap:wrap;gap:10px;margin-top:28px">
+          <a href="#contacto" style="display:inline-flex;align-items:center;height:36px;padding:0 12px;border-radius:5px;font-size:14px;line-height:24px;font-weight:600;letter-spacing:-.01em;color:#04231D;background:linear-gradient(180deg,#00C7A9,#00B096);box-shadow:0 1px 1px rgba(4,35,29,.2),0 2px 4px -2px rgba(4,35,29,.4),0 1px 5px -2px rgba(4,35,29,.4),0 0 0 1px #00A68D,inset 0 1px .5px rgba(255,255,255,.3),inset 0 0 0 100px rgba(255,255,255,0);transition:box-shadow 160ms ease" style-hover="color:#04231D;box-shadow:0 1px 1px rgba(4,35,29,.2),0 2px 4px -2px rgba(4,35,29,.4),0 1px 5px -2px rgba(4,35,29,.4),0 0 0 1px #00A68D,inset 0 1px .5px rgba(255,255,255,.3),inset 0 0 0 100px rgba(255,255,255,.14)" style-active="box-shadow:0 1px 1px rgba(4,35,29,.2),0 0 0 1px #00A68D,inset 0 0 0 100px rgba(0,60,50,.1)">Hablemos de tu operación</a>
+          <a href="#soluciones" style="display:inline-flex;align-items:center;height:36px;padding:0 12px;border-radius:5px;font-size:14px;line-height:24px;font-weight:600;letter-spacing:-.01em;color:var(--sc,#1B2421);background:var(--sb,rgba(255,255,255,.62));backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);box-shadow:var(--ss,inset 0 1px 0 rgba(255,255,255,.95),0 0 0 1px rgba(27,36,33,.08),0 2px 12px -4px rgba(27,36,33,.2));transition:background-color 600ms ease,color 600ms ease,box-shadow 600ms ease" style-hover="background:rgba(255,255,255,.18);color:var(--sc,#1B2421)">Ver soluciones</a>
+        </div>
+      </div>
+      <div ref="{{ mediaRef }}" data-hero="media" style="flex:1 1 520px;max-width:700px;aspect-ratio:16/10;margin:0 auto;position:relative;border-radius:16px;overflow:hidden;background:#0B2A24;box-shadow:0 0 0 1px rgba(27,36,33,.08),0 24px 48px -16px rgba(11,42,36,.35),0 2px 6px rgba(11,42,36,.08),60px -60px 140px -30px rgba(255,190,90,.45),-60px 60px 160px -40px rgba(0,192,163,.45)">
+        <video ref="{{ heroImgRef }}" src="assets/enerfrost-hero.webm" poster="assets/foto-gen-bo.png" autoPlay="" muted="" loop="" playsInline="" aria-label="Planta de generación Enerfrost en operación" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block"></video>
+        <div data-leak="a" aria-hidden="true" style="position:absolute;top:-38%;right:-26%;width:88%;height:105%;border-radius:50%;pointer-events:none;background:radial-gradient(circle at center,rgba(255,240,200,1) 0%,rgba(255,196,96,.95) 22%,rgba(242,150,53,.55) 44%,rgba(242,140,53,0) 70%);filter:blur(56px);-webkit-filter:blur(56px);mix-blend-mode:screen;opacity:.8;transform-origin:85% 15%;will-change:transform,opacity"></div>
+        <div data-leak="b" aria-hidden="true" style="position:absolute;bottom:-40%;left:-28%;width:82%;height:100%;border-radius:50%;pointer-events:none;background:radial-gradient(circle at center,rgba(214,255,247,1) 0%,rgba(60,220,195,.85) 26%,rgba(0,192,163,.4) 48%,rgba(0,192,163,0) 70%);filter:blur(64px);-webkit-filter:blur(64px);mix-blend-mode:screen;opacity:.65;transform-origin:15% 85%;will-change:transform,opacity"></div>
+        <button onClick="{{ togglePause }}" aria-label="{{ pauseLabel }}" style="position:absolute;top:12px;right:12px;width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.82);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:0;color:var(--ink,#1B2421);cursor:pointer;padding:0">{{ pauseIcon }}</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="presencia" data-screen-label="02 Presencia y cifras" style="position:relative;background:var(--bg,#ffffff)">
+    <div style="max-width:1440px;margin:0 auto;padding:var(--sec) var(--gut) clamp(40px,5vw,56px);box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 40px">
+      <div>
+        <h2 data-reveal="charge" data-node="" style="margin:0;font-size:clamp(28px,2.6vw,36px);line-height:1.11;letter-spacing:-.025em;font-weight:600;max-width:15em;text-wrap:balance">Impulsamos la energía de Latinoamérica</h2>
+        <p style="margin:12px 0 0;font-size:17px;line-height:26px;letter-spacing:-.015em;color:var(--mut,#686666)">Nacimos en Chile y operamos en la región</p>
+      </div>
+      <a data-arrow="" href="#" style="display:inline-flex;align-items:center;gap:4px;font-size:14px;line-height:24px;font-weight:600">Ver presencia regional{{ ic.arrow }}</a>
+    </div>
+    <div style="max-width:1440px;margin:0 auto;padding:0 var(--rail);box-sizing:border-box">
+      <div data-fillblock="" data-node="nb" style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:1px;background:var(--bg,#ffffff)">
+        <div data-gfill="" aria-hidden="true" style="position:absolute;inset:0;background:#0B2A24;clip-path:circle(0px at 0px 0px);pointer-events:none"></div>
+        <div data-reveal="power" style="position:relative;background:transparent;box-shadow:0 0 0 1px var(--cl,#E8E9E9);transition:box-shadow 500ms ease;padding:clamp(28px,3vw,40px) 24px;display:flex;flex-direction:column;gap:10px"><span data-count="15" style="font-size:clamp(48px,5vw,72px);line-height:1;letter-spacing:-.04em;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ci,#1B2421);transition:color 500ms ease">15<span style="color:#00A68D">+</span></span><span style="font-size:15px;line-height:24px;color:var(--cm,#686666);transition:color 500ms ease">años de experiencia</span></div>
+        <div data-reveal="power" style="position:relative;background:transparent;box-shadow:0 0 0 1px var(--cl,#E8E9E9);transition:box-shadow 500ms ease;padding:clamp(28px,3vw,40px) 24px;display:flex;flex-direction:column;gap:10px"><span data-count="3" style="font-size:clamp(48px,5vw,72px);line-height:1;letter-spacing:-.04em;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ci,#1B2421);transition:color 500ms ease">3</span><span style="font-size:15px;line-height:24px;color:var(--cm,#686666);transition:color 500ms ease">países en operación</span></div>
+        <div data-reveal="power" style="position:relative;background:transparent;box-shadow:0 0 0 1px var(--cl,#E8E9E9);transition:box-shadow 500ms ease;padding:clamp(28px,3vw,40px) 24px;display:flex;flex-direction:column;gap:10px"><span data-count="120" style="font-size:clamp(48px,5vw,72px);line-height:1;letter-spacing:-.04em;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ci,#1B2421);transition:color 500ms ease">120<span style="color:#00A68D">+</span></span><span style="font-size:15px;line-height:24px;color:var(--cm,#686666);transition:color 500ms ease">proyectos realizados</span></div>
+      </div>
+    </div>
+    <div style="max-width:1440px;margin:0 auto;padding:clamp(40px,5vw,64px) var(--gut) 0;box-sizing:border-box;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:32px clamp(40px,6vw,96px)">
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:center;gap:10px;font-size:11px;line-height:18px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--mut,#686666)"><span style="position:relative;width:8px;height:8px;flex:none"><span data-live="" style="position:absolute;inset:0;border-radius:50%;background:#00C0A3"></span><span style="position:absolute;inset:0;border-radius:50%;background:#00C0A3"></span></span>En operación</div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          <sc-for list="{{ countriesOp }}" as="c" hint-placeholder-count="3">
+            <div data-reveal="power" style="display:inline-flex;align-items:center;gap:12px;padding:12px 18px 12px 14px;border-radius:12px;background:var(--neu,linear-gradient(145deg,#FFFFFF,#F2F3F3));box-shadow:var(--neush,5px 5px 14px rgba(27,36,33,.07),-5px -5px 14px #ffffff,inset 0 0 0 1px rgba(27,36,33,.05))">
+              <img src="{{ c.flag }}" alt="" style="width:28px;height:19px;object-fit:cover;border-radius:3px;box-shadow:0 0 0 1px rgba(27,36,33,.08)">
+              <span style="font-size:15px;line-height:24px;font-weight:600">{{ c.n }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;align-items:center;gap:10px;font-size:11px;line-height:18px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--mut,#686666)"><span style="width:8px;height:8px;border-radius:50%;border:2px solid #F2B435;box-sizing:border-box;flex:none"></span>En expansión</div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          <sc-for list="{{ countriesExp }}" as="c" hint-placeholder-count="3">
+            <div data-reveal="power" style="display:inline-flex;align-items:center;gap:12px;padding:12px 18px 12px 14px;border-radius:12px;background:var(--neu,linear-gradient(145deg,#FFFFFF,#F2F3F3));box-shadow:var(--neush,5px 5px 14px rgba(27,36,33,.07),-5px -5px 14px #ffffff,inset 0 0 0 1px rgba(27,36,33,.05))">
+              <img src="{{ c.flag }}" alt="" style="width:28px;height:19px;object-fit:cover;border-radius:3px;box-shadow:0 0 0 1px rgba(27,36,33,.08);filter:grayscale(1);opacity:.5">
+              <span style="font-size:15px;line-height:24px;font-weight:600;color:var(--mut,#686666)">{{ c.n }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1440px;margin:0 auto;padding:clamp(40px,5vw,56px) var(--gut) 0;box-sizing:border-box">
+      <div data-reveal="power" style="display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:12px 40px;padding-top:28px;border-top:1px solid var(--line,rgba(27,36,33,.1))">
+        <p style="margin:0;max-width:34em;font-size:17px;line-height:26px;letter-spacing:-.015em;color:var(--ink,#1B2421)">Liderado por profesionales que suman más de <span style="color:var(--acc,#007F6C);font-weight:600">1 GW</span> en plantas de generación montadas</p>
+        <a data-arrow="" href="#" style="display:inline-flex;align-items:center;gap:4px;font-size:14px;line-height:24px;font-weight:600">Conocer al equipo{{ ic.arrow }}</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="soluciones" data-screen-label="03 Soluciones" style="position:relative;background:var(--bg,#ffffff)">
+    <div style="max-width:1440px;margin:0 auto;padding:var(--sec) var(--gut) clamp(40px,5vw,56px);box-sizing:border-box">
+      <h2 data-reveal="charge" data-node="" style="margin:0;font-size:clamp(28px,2.6vw,36px);line-height:1.11;letter-spacing:-.025em;font-weight:600;max-width:15em;text-wrap:balance">Soluciones a la medida de tu operación</h2>
+    </div>
+    <div style="max-width:1440px;margin:0 auto;padding:0 var(--rail);box-sizing:border-box">
+      <div ref="{{ solGridRef }}" data-fillblock="" data-node="nb" style="position:relative;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:1px;background:var(--bg2,#F7F7F8)">
+        <div data-gfill="" aria-hidden="true" style="position:absolute;inset:0;background:#0B2A24;clip-path:circle(0px at 0px 0px);pointer-events:none"></div>
+        <sc-for list="{{ solutions }}" as="s" hint-placeholder-count="3">
+          <div data-reveal="power" style="position:relative;background:transparent;box-shadow:0 0 0 1px var(--cl,#E8E9E9);transition:box-shadow 500ms ease;min-height:280px;padding:28px 24px;box-sizing:border-box;display:flex;flex-direction:column;gap:6px">
+            <span data-reveal="burst" style="position:relative;width:48px;height:48px;border-radius:12px;background:linear-gradient(145deg,#FFFFFF,#EEF0EF);box-shadow:6px 6px 14px rgba(27,36,33,.08),-6px -6px 14px rgba(255,255,255,.95),inset 0 1px 0 #ffffff;display:flex;align-items:center;justify-content:center;color:#006E5B;margin-bottom:auto">{{ s.icon }}</span>
+            <h3 style="position:relative;margin:32px 0 0;font-size:20px;line-height:28px;letter-spacing:-.015em;font-weight:600;color:var(--ci,#1B2421);transition:color 500ms ease">{{ s.n }}</h3>
+            <p style="position:relative;margin:0;font-size:14px;line-height:24px;color:var(--cm,#686666);max-width:34ch;transition:color 500ms ease">{{ s.d }}</p>
+            <a data-arrow="" href="#" style="position:relative;display:inline-flex;align-items:center;gap:4px;font-size:14px;line-height:24px;font-weight:600;margin-top:10px;align-self:flex-start;color:var(--ci,#1B2421);transition:color 500ms ease" style-hover="color:#00C0A3">Ver más{{ ic.arrow }}</a>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="max-width:1440px;margin:0 auto;padding:32px var(--gut) 0;box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:center;gap:14px 20px">
+      <span style="font-size:11px;line-height:18px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--mut,#686666)">Tecnologías</span>
+      <div style="display:flex;flex-wrap:wrap;gap:6px;flex:1 1 420px">
+        <sc-for list="{{ techs }}" as="t" hint-placeholder-count="9">
+          <a data-reveal="power" href="#" style="display:inline-flex;align-items:center;gap:6px;font-size:13px;line-height:20px;font-weight:600;color:var(--chip,#4A4F4D);padding:5px 14px 5px 11px;border-radius:999px;background:var(--neu,linear-gradient(145deg,#FFFFFF,#F2F3F3));box-shadow:var(--neush,3px 3px 8px rgba(27,36,33,.07),-3px -3px 8px rgba(255,255,255,.95),inset 0 0 0 1px rgba(27,36,33,.05));transition:box-shadow 200ms ease,color 150ms ease" style-hover="color:#006E5B;box-shadow:inset 2px 2px 5px rgba(27,36,33,.08),inset -2px -2px 5px rgba(255,255,255,.95),inset 0 0 0 1px rgba(0,192,163,.3)"><span style="display:flex;color:#00A68D">{{ t.icon }}</span>{{ t.n }}</a>
+        </sc-for>
+      </div>
+      <a data-arrow="" href="#" style="display:inline-flex;align-items:center;gap:4px;font-size:14px;line-height:24px;font-weight:600">Ver tecnologías{{ ic.arrow }}</a>
+    </div>
+    <div style="position:relative;max-width:1440px;margin:0 auto;padding:clamp(72px,8vw,120px) var(--gut) var(--sec);box-sizing:border-box;display:flex;flex-direction:column;align-items:center;gap:24px;text-align:center">
+      <svg viewBox="0 0 240 480" preserveAspectRatio="xMinYMid meet" aria-hidden="true" style="position:absolute;top:0;bottom:0;left:0;width:max(0px,calc(50% - 460px));height:100%;fill:none;pointer-events:none">
+        <g style="stroke:rgba(0,166,141,.26);stroke-width:1"><path d="M0 130 H90 L140 180 H230"></path><path d="M0 300 H120 L160 260 H240"></path><path d="M60 480 V400 L110 350 H200"></path></g>
+        <g style="stroke:#00C0A3;stroke-width:1.6;stroke-linecap:round"><path data-pulse-cta="" d="M0 130 H90 L140 180 H230"></path><path data-pulse-cta="" d="M0 300 H120 L160 260 H240"></path><path data-pulse-cta="" d="M60 480 V400 L110 350 H200"></path></g>
+        <g style="fill:#00C0A3"><circle cx="230" cy="180" r="3"></circle><circle cx="240" cy="260" r="3"></circle><circle cx="200" cy="350" r="3"></circle></g>
+      </svg>
+      <svg viewBox="0 0 240 480" preserveAspectRatio="xMaxYMid meet" aria-hidden="true" style="position:absolute;top:0;bottom:0;right:0;width:max(0px,calc(50% - 460px));height:100%;fill:none;pointer-events:none">
+        <g style="stroke:rgba(0,166,141,.26);stroke-width:1"><path d="M240 130 H150 L100 180 H10"></path><path d="M240 300 H120 L80 260 H0"></path><path d="M180 480 V400 L130 350 H40"></path></g>
+        <g style="stroke:#00C0A3;stroke-width:1.6;stroke-linecap:round"><path data-pulse-cta="" d="M240 130 H150 L100 180 H10"></path><path data-pulse-cta="" d="M240 300 H120 L80 260 H0"></path><path data-pulse-cta="" d="M180 480 V400 L130 350 H40"></path></g>
+        <g style="fill:#00C0A3"><circle cx="10" cy="180" r="3"></circle><circle cx="0" cy="260" r="3"></circle><circle cx="40" cy="350" r="3"></circle></g>
+      </svg>
+      <p data-reveal="charge" data-node="nb" style="position:relative;margin:0;max-width:800px;font-size:clamp(24px,2.6vw,36px);line-height:1.12;letter-spacing:-.025em;font-weight:500;color:#7E8180;text-wrap:balance"><span style="color:#009C85;font-weight:600">Llave en mano y sin inversión de capital:</span> instalamos, operamos y mantenemos.</p>
+      <a data-arrow="" href="#" style="position:relative;display:inline-flex;align-items:center;gap:4px;font-size:14px;line-height:24px;font-weight:600">Operación y mantenimiento{{ ic.arrow }}</a>
+    </div>
+  </section>
+
+  <section id="industrias" ref="{{ indRef }}" data-screen-label="04 Industrias" style="position:relative;z-index:2;margin:0 2px;border-radius:6px;background:var(--bg,#ffffff);color:var(--ink,#1B2421);overflow:clip">
+    <div ref="{{ hStickyRef }}" style="position:sticky;top:0;height:100vh;min-height:560px;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:clamp(28px,4vh,48px);padding:84px 0 40px;box-sizing:border-box">
+      <div data-ifill="" aria-hidden="true" style="position:absolute;inset:0;background:#0B2A24;clip-path:circle(0px at 0px 0px);pointer-events:none"></div>
+      <div ref="{{ hLineRef }}" aria-hidden="true" style="position:absolute;inset:0;pointer-events:none;z-index:1"></div>
+      <div style="position:relative;z-index:2;width:100%;max-width:1440px;margin:0 auto;padding:0 var(--gut);box-sizing:border-box;display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px 40px">
+        <h2 data-reveal="charge" style="margin:0;font-size:clamp(28px,2.6vw,36px);line-height:1.11;letter-spacing:-.025em;font-weight:600;color:var(--ii,#1B2421);transition:color 600ms ease">Soluciones por industria</h2>
+        <a data-arrow="" href="#" style="display:inline-flex;align-items:center;gap:4px;font-size:14px;line-height:24px;font-weight:600;color:var(--ii,#1B2421);transition:color 600ms ease" style-hover="color:#00A68D">Ver catálogo de proyectos{{ ic.arrow }}</a>
+      </div>
+      <div ref="{{ hViewRef }}" style="position:relative;z-index:2;width:100%;overflow:hidden">
+        <div ref="{{ hTrackRef }}" style="display:flex;gap:16px;width:max-content;padding:0 max(var(--gut),calc((100vw - 1440px) / 2 + var(--gut)));will-change:transform">
+          <sc-for list="{{ industries }}" as="d" hint-placeholder-count="5">
+            <a href="#" style="position:relative;flex:none;width:clamp(280px,32vw,440px);display:block;color:#ffffff" style-hover="color:#ffffff">
+              <span style="position:relative;display:block;height:min(58vh,540px);min-height:340px;border-radius:14px;overflow:hidden;background:#06201b;box-shadow:0 0 0 1px rgba(255,255,255,.08)">
+                <img src="{{ d.img }}" alt="{{ d.n }}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:{{ d.pos }}">
+              </span>
+              <span style="position:absolute;left:12px;right:12px;bottom:12px;display:flex;flex-direction:column;gap:4px;padding:16px 18px;border-radius:10px;background:rgba(11,42,36,.6);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 8px 24px -8px rgba(0,0,0,.4)">
+                <span style="display:flex;align-items:center;gap:10px;font-size:20px;line-height:28px;letter-spacing:-.015em;font-weight:600"><span style="display:flex;color:#00C0A3">{{ d.iconSm }}</span>{{ d.n }}</span>
+                <span style="font-size:14px;line-height:24px;color:rgba(255,255,255,.88)">{{ d.d }}</span>
+                <span data-arrow="" style="display:inline-flex;align-items:center;gap:4px;font-size:14px;line-height:24px;font-weight:600;margin-top:4px;color:#ffffff">Ver solución y proyectos{{ ic.arrow }}</span>
+              </span>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+      <div data-turn="" style="height:1px;flex:none"></div>
+    </div>
+  </section>
+
+  <section data-screen-label="05 Clientes" style="position:relative;background:var(--bg,#ffffff)">
+    <div style="max-width:1440px;margin:0 auto;padding:var(--sec) var(--rail) 0;box-sizing:border-box">
+      <div data-node="nb" style="padding:0 24px 40px;text-align:center"><h2 data-reveal="charge" style="margin:0;font-size:clamp(28px,2.6vw,36px);line-height:1.11;letter-spacing:-.025em;font-weight:600;color:var(--ink,#1B2421)">Clientes y partners</h2></div>
+      <div ref="{{ logoRef }}" onMouseEnter="{{ pauseMarquee }}" onMouseLeave="{{ playMarquee }}" style="overflow:hidden;border-top:1px solid var(--line,rgba(27,36,33,.1));border-bottom:1px solid var(--line,rgba(27,36,33,.1));-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)">
+        <div ref="{{ marqueeRef }}" style="display:flex;width:max-content">
+          <sc-for list="{{ logos }}" as="l" hint-placeholder-count="12">
+            <div style="flex:none;width:clamp(160px,16vw,240px);height:{{ L.logoH }};border-right:1px solid var(--line,rgba(27,36,33,.1));display:flex;align-items:center;justify-content:center;font-size:12px;line-height:20px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9A9D9C">{{ l }}</div>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contacto" data-screen-label="06 Llamado final" style="position:relative;background:var(--bg,#ffffff);overflow:hidden">
+    <svg viewBox="0 0 240 680" preserveAspectRatio="xMinYMid meet" aria-hidden="true" style="position:absolute;top:0;bottom:0;left:0;width:max(0px,calc(50% - 470px));height:100%;fill:none;pointer-events:none">
+      <g style="stroke:rgba(0,166,141,.26);stroke-width:1"><path d="M0 150 H110 L160 200 H230"></path><path d="M0 320 H70 L110 280 H190 L215 305 H240"></path><path d="M0 470 H120 L170 420 H230"></path><path d="M150 0 V70 L200 120 H240"></path><path d="M0 590 H140 L170 560 H240"></path><path d="M70 680 V620 L120 570"></path></g>
+      <g style="stroke:#00C0A3;stroke-width:1.6;stroke-linecap:round"><path data-pulse-cta="" d="M0 150 H110 L160 200 H230"></path><path data-pulse-cta="" d="M0 320 H70 L110 280 H190 L215 305 H240"></path><path data-pulse-cta="" d="M0 470 H120 L170 420 H230"></path><path data-pulse-cta="" d="M150 0 V70 L200 120 H240"></path><path data-pulse-cta="" d="M0 590 H140 L170 560 H240"></path><path data-pulse-cta="" d="M70 680 V620 L120 570"></path></g>
+      <g style="fill:#00C0A3"><circle cx="230" cy="200" r="3"></circle><circle cx="240" cy="305" r="3"></circle><circle cx="230" cy="420" r="3"></circle><circle cx="240" cy="120" r="3"></circle><circle cx="240" cy="560" r="3"></circle><circle cx="120" cy="570" r="3"></circle></g>
+    </svg>
+    <svg viewBox="0 0 240 680" preserveAspectRatio="xMaxYMid meet" aria-hidden="true" style="position:absolute;top:0;bottom:0;right:0;width:max(0px,calc(50% - 470px));height:100%;fill:none;pointer-events:none">
+      <g style="stroke:rgba(0,166,141,.26);stroke-width:1"><path d="M240 150 H130 L80 200 H10"></path><path d="M240 320 H170 L130 280 H50 L25 305 H0"></path><path d="M240 470 H120 L70 420 H10"></path><path d="M90 0 V70 L40 120 H0"></path><path d="M240 590 H100 L70 560 H0"></path><path d="M170 680 V620 L120 570"></path></g>
+      <g style="stroke:#00C0A3;stroke-width:1.6;stroke-linecap:round"><path data-pulse-cta="" d="M240 150 H130 L80 200 H10"></path><path data-pulse-cta="" d="M240 320 H170 L130 280 H50 L25 305 H0"></path><path data-pulse-cta="" d="M240 470 H120 L70 420 H10"></path><path data-pulse-cta="" d="M90 0 V70 L40 120 H0"></path><path data-pulse-cta="" d="M240 590 H100 L70 560 H0"></path><path data-pulse-cta="" d="M170 680 V620 L120 570"></path></g>
+      <g style="fill:#00C0A3"><circle cx="10" cy="200" r="3"></circle><circle cx="0" cy="305" r="3"></circle><circle cx="10" cy="420" r="3"></circle><circle cx="0" cy="120" r="3"></circle><circle cx="0" cy="560" r="3"></circle><circle cx="120" cy="570" r="3"></circle></g>
+    </svg>
+    <div style="position:relative;max-width:1440px;margin:0 auto;padding:var(--sec) var(--gut);box-sizing:border-box;display:flex;flex-direction:column;align-items:center;text-align:center">
+      <h2 data-reveal="charge" data-node="nb" style="margin:0;max-width:900px;font-size:clamp(40px,3.9vw,56px);line-height:1.14;letter-spacing:-.035em;font-weight:600;text-wrap:balance"><span style="display:block;color:var(--ink,#1B2421)">Hablemos de tu operación</span><span style="display:block;color:#7E8180">Un especialista te responde en menos de 24 horas.</span></h2>
+      <div style="display:flex;justify-content:center;margin-top:36px">
+        <a href="#" style="display:inline-flex;align-items:center;height:36px;padding:0 12px;border-radius:5px;font-size:14px;line-height:24px;font-weight:600;letter-spacing:-.01em;color:#04231D;background:linear-gradient(180deg,#00C7A9,#00B096);box-shadow:0 1px 1px rgba(4,35,29,.2),0 2px 4px -2px rgba(4,35,29,.4),0 1px 5px -2px rgba(4,35,29,.4),0 0 0 1px #00A68D,inset 0 1px .5px rgba(255,255,255,.3),inset 0 0 0 100px rgba(255,255,255,0);transition:box-shadow 160ms ease" style-hover="color:#04231D;box-shadow:0 1px 1px rgba(4,35,29,.2),0 2px 4px -2px rgba(4,35,29,.4),0 1px 5px -2px rgba(4,35,29,.4),0 0 0 1px #00A68D,inset 0 1px .5px rgba(255,255,255,.3),inset 0 0 0 100px rgba(255,255,255,.14)" style-active="box-shadow:0 1px 1px rgba(4,35,29,.2),0 0 0 1px #00A68D,inset 0 0 0 100px rgba(0,60,50,.1)">Solicitar propuesta</a>
+      </div>
+    </div>
+  </section>
+
+  <footer data-node="nb" data-screen-label="07 Pie de página" ref="{{ footRef }}" style="position:relative;background:var(--bg2,#F7F7F8);overflow:hidden;color:var(--fi,#1B2421);transition:color 600ms ease">
+    <div data-fill="" aria-hidden="true" style="position:absolute;inset:0;background:#0B2A24;clip-path:circle(0px at 100% 0px);pointer-events:none"></div>
+    <div style="position:relative;max-width:1440px;margin:0 auto;padding:clamp(48px,5vw,72px) var(--gut) 0;box-sizing:border-box;border-top:1px solid var(--fl,rgba(27,36,33,.1))">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:40px clamp(32px,4vw,64px);padding-bottom:48px">
+        <div style="display:flex;flex-direction:column;align-items:flex-start;gap:14px">
+          <span style="position:relative;display:inline-block"><img src="assets/logo-a6.png" alt="Enerfrost" style="height:20px;width:auto;display:block;opacity:var(--lod,1);transition:opacity 600ms ease"><img src="assets/logo-a4.png" alt="" style="position:absolute;left:0;top:0;height:20px;width:auto;opacity:var(--lol,0);transition:opacity 600ms ease"></span>
+          <p style="margin:0;font-size:15px;line-height:24px;font-weight:600;max-width:16em">Energía que hace posible lo que viene.</p>
+          <a href="#" style="font-size:14px;line-height:24px;color:var(--fm,#686666)" style-hover="color:#006E5B">[correo]</a>
+          <div style="display:flex;gap:6px">
+            <a href="#" aria-label="LinkedIn" style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#FFFFFF,#F0F1F1);box-shadow:3px 3px 8px rgba(27,36,33,.08),-3px -3px 8px #ffffff;font-size:11px;font-weight:700;color:var(--ink,#1B2421)" style-hover="color:#006E5B">in</a>
+            <a href="#" aria-label="YouTube" style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#FFFFFF,#F0F1F1);box-shadow:3px 3px 8px rgba(27,36,33,.08),-3px -3px 8px #ffffff;font-size:11px;font-weight:700;color:var(--ink,#1B2421)" style-hover="color:#006E5B">YT</a>
+            <a href="#" aria-label="Instagram" style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#FFFFFF,#F0F1F1);box-shadow:3px 3px 8px rgba(27,36,33,.08),-3px -3px 8px #ffffff;font-size:11px;font-weight:700;color:var(--ink,#1B2421)" style-hover="color:#006E5B">IG</a>
+            <a href="#" aria-label="Facebook" style="width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#FFFFFF,#F0F1F1);box-shadow:3px 3px 8px rgba(27,36,33,.08),-3px -3px 8px #ffffff;font-size:11px;font-weight:700;color:var(--ink,#1B2421)" style-hover="color:#006E5B">FB</a>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <span style="font-size:11px;line-height:18px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--fm,#686666);margin-bottom:6px">Compañía</span>
+          <a href="#" style="font-size:14px;line-height:24px;color:var(--fm,#686666)" style-hover="color:var(--fi,#1B2421)">Trabaja con nosotros</a>
+          <a href="#" style="font-size:14px;line-height:24px;color:var(--fm,#686666)" style-hover="color:var(--fi,#1B2421)">Proveedores</a>
+          <a href="#contacto" style="font-size:14px;line-height:24px;color:var(--fm,#686666)" style-hover="color:var(--fi,#1B2421)">Contacto</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:12px">
+          <span style="font-size:11px;line-height:18px;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--fm,#686666)">Presencia</span>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:24px">
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="display:flex;align-items:center;gap:8px;font-size:13px;line-height:20px;font-weight:600"><span style="width:7px;height:7px;border-radius:50%;background:#00C0A3"></span>En operación</span>
+              <sc-for list="{{ countriesOp }}" as="c" hint-placeholder-count="3">
+                <span style="display:flex;flex-direction:column;gap:2px;font-size:14px;line-height:24px"><span style="display:flex;align-items:center;gap:8px;color:var(--fi,#1B2421)"><img src="{{ c.flag }}" alt="" style="width:18px;height:12px;object-fit:cover;border-radius:2px;box-shadow:0 0 0 1px rgba(27,36,33,.12)">{{ c.n }}</span><span style="display:flex;align-items:center;gap:8px;font-size:13px;line-height:20px;color:var(--fm,#686666)"><span style="display:flex;width:18px;justify-content:center;color:#00A68D">{{ ic.phone }}</span>[teléfono local]</span></span>
+              </sc-for>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <span style="display:flex;align-items:center;gap:8px;font-size:13px;line-height:20px;font-weight:600"><span style="width:7px;height:7px;border-radius:50%;border:2px solid #F2B435;box-sizing:border-box"></span>En expansión</span>
+              <sc-for list="{{ countriesExp }}" as="c" hint-placeholder-count="3">
+                <span style="display:flex;flex-direction:column;gap:2px;font-size:14px;line-height:24px"><span style="display:flex;align-items:center;gap:8px;color:var(--fi,#1B2421)"><img src="{{ c.flag }}" alt="" style="width:18px;height:12px;object-fit:cover;border-radius:2px;box-shadow:0 0 0 1px rgba(27,36,33,.12);filter:grayscale(1);opacity:.6">{{ c.n }}</span><span style="display:flex;align-items:center;gap:8px;font-size:13px;line-height:20px;color:var(--fm,#686666)"><span style="display:flex;width:18px;justify-content:center;color:#00A68D">{{ ic.phone }}</span>[teléfono local]</span></span>
+              </sc-for>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 24px;padding:20px 0 28px;border-top:1px solid var(--fl,rgba(27,36,33,.1));font-size:13px;line-height:20px;color:var(--fm,#686666)">
+        <span>© 2026 · Energía &amp; Mantención Enerfrost SpA</span>
+        <div style="display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center">
+          <a href="#" style="color:var(--fm,#686666)" style-hover="color:var(--fi,#1B2421)">Política de privacidad</a>
+          <a href="#" style="color:var(--fm,#686666)" style-hover="color:var(--fi,#1B2421)">Política de cookies</a>
+          <span style="font-weight:600;color:var(--fi,#1B2421)">ES <span style="color:#B8BAB9">/</span> <span style="color:#9A9D9C">EN</span></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div ref="{{ glowRef }}" aria-hidden="true" style="position:fixed;left:0;top:0;width:440px;height:440px;margin:-220px 0 0 -220px;border-radius:50%;pointer-events:none;z-index:4;background:radial-gradient(circle,rgba(0,192,163,.26) 0%,rgba(0,192,163,.09) 34%,rgba(0,192,163,0) 68%);mix-blend-mode:screen;opacity:0;transition:opacity 400ms ease;will-change:transform"></div>
+  <sc-if value="{{ chatTip }}" hint-placeholder-val="{{ false }}">
+    <div data-tip="" style="position:fixed;right:calc(clamp(16px,2.4vw,32px) + 58px);bottom:calc(clamp(16px,2.4vw,32px) + 6px);z-index:60;display:flex;align-items:center;gap:10px;padding:7px 7px 7px 14px;border-radius:12px;background:rgba(27,36,33,.8);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 1px rgba(255,255,255,.08),0 10px 28px -8px rgba(27,36,33,.5)">
+      <a href="#contacto" onClick="{{ closeTip }}" style="font-size:14px;line-height:20px;font-weight:600;color:#ffffff" style-hover="color:#6FF7E1">¿Hablamos?</a>
+      <button onClick="{{ closeTip }}" aria-label="Cerrar" style="width:26px;height:26px;display:flex;align-items:center;justify-content:center;border:0;border-radius:7px;background:rgba(255,255,255,.1);color:#ffffff;cursor:pointer;padding:0">{{ ic.x }}</button>
+    </div>
+  </sc-if>
+  <a href="#contacto" aria-label="Abrir chat" style="position:fixed;right:clamp(16px,2.4vw,32px);bottom:clamp(16px,2.4vw,32px);z-index:60;width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:rgba(27,36,33,.78);backdrop-filter:blur(14px) saturate(160%);-webkit-backdrop-filter:blur(14px) saturate(160%);color:#ffffff;box-shadow:inset 0 1px 0 rgba(255,255,255,.14),0 0 0 1px rgba(255,255,255,.08),0 10px 28px -8px rgba(27,36,33,.5);transition:background-color 160ms ease" style-hover="background:rgba(27,36,33,.9);color:#ffffff">{{ ic.msg }}</a>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;gridPulse&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Movimiento&quot;},&quot;showRails&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Estructura&quot;}}">
+const P = {
+  timer: [['line',{x1:10,x2:14,y1:2,y2:2}],['line',{x1:12,x2:15,y1:14,y2:11}],['circle',{cx:12,cy:14,r:8}]],
+  siren: [['path',{d:'M7 18v-6a5 5 0 1 1 10 0v6'}],['path',{d:'M5 21a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2z'}],['path',{d:'M21 12h1'}],['path',{d:'M18.5 4.5 18 5'}],['path',{d:'M2 12h1'}],['path',{d:'M12 2v1'}],['path',{d:'m4.929 4.929.707.707'}],['path',{d:'M12 12v6'}]],
+  leaf: [['path',{d:'M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z'}],['path',{d:'M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12'}]],
+  zap: [['path',{d:'M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z'}]],
+  pickaxe: [['path',{d:'M14.531 12.469 6.619 20.38a1 1 0 1 1-3-3l7.912-7.912'}],['path',{d:'M15.686 4.314A12.5 12.5 0 0 0 5.461 2.958 1 1 0 0 0 5.58 4.71a22 22 0 0 1 6.318 3.393'}],['path',{d:'M17.7 3.7a1 1 0 0 0-1.4 0l-4.6 4.6a1 1 0 0 0 0 1.4l2.6 2.6a1 1 0 0 0 1.4 0l4.6-4.6a1 1 0 0 0 0-1.4z'}],['path',{d:'M19.686 8.314a12.501 12.501 0 0 1 1.356 10.225 1 1 0 0 1-1.751-.119 22 22 0 0 0-3.393-6.319'}]],
+  flame: [['path',{d:'M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z'}]],
+  server: [['rect',{width:20,height:8,x:2,y:2,rx:2}],['rect',{width:20,height:8,x:2,y:14,rx:2}],['line',{x1:6,x2:6.01,y1:6,y2:6}],['line',{x1:6,x2:6.01,y1:18,y2:18}]],
+  factory: [['path',{d:'M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z'}],['path',{d:'M17 18h1'}],['path',{d:'M12 18h1'}],['path',{d:'M7 18h1'}]],
+  wrench: [['path',{d:'M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z'}]],
+  layers: [['path',{d:'m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z'}],['path',{d:'m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65'}],['path',{d:'m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65'}]],
+  chev: [['path',{d:'m6 9 6 6 6-6'}]],
+  msg: [['path',{d:'M7.9 20A9 9 0 1 0 4 16.1L2 22Z'}]],
+  menu: [['line',{x1:4,x2:20,y1:8,y2:8}],['line',{x1:4,x2:20,y1:16,y2:16}]],
+  x: [['path',{d:'M18 6 6 18'}],['path',{d:'m6 6 12 12'}]],
+  mail: [['rect',{width:20,height:16,x:2,y:4,rx:2}],['path',{d:'m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7'}]],
+  search: [['circle',{cx:11,cy:11,r:8}],['path',{d:'m21 21-4.3-4.3'}]],
+  pause: [['rect',{x:14,y:4,width:4,height:16,rx:1}],['rect',{x:6,y:4,width:4,height:16,rx:1}]],
+  play: [['polygon',{points:'6 3 20 12 6 21 6 3'}]],
+  phone: [['path',{d:'M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z'}]],
+  droplet: [['path',{d:'M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z'}]],
+  snow: [['path',{d:'M12 2v20'}],['path',{d:'m4.93 4.93 14.14 14.14'}],['path',{d:'m19.07 4.93-14.14 14.14'}],['path',{d:'M2 12h20'}]],
+  cyl: [['rect',{x:7,y:5,width:10,height:16,rx:3}],['path',{d:'M10 5V2h4v3'}]],
+  well: [['path',{d:'M12 2v14'}],['path',{d:'m8 12 4 4 4-4'}],['path',{d:'M4 21h16'}]],
+  cycle: [['path',{d:'M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8'}],['path',{d:'M21 3v5h-5'}],['path',{d:'M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16'}],['path',{d:'M8 16H3v5'}]],
+  battery: [['rect',{x:2,y:7,width:16,height:10,rx:2}],['path',{d:'M22 11v2'}],['path',{d:'M6 11v2'}],['path',{d:'M10 11v2'}]],
+  sun: [['circle',{cx:12,cy:12,r:4}],['path',{d:'M12 2v2'}],['path',{d:'M12 20v2'}],['path',{d:'m4.93 4.93 1.41 1.41'}],['path',{d:'m17.66 17.66 1.41 1.41'}],['path',{d:'M2 12h2'}],['path',{d:'M20 12h2'}],['path',{d:'m6.34 17.66-1.41 1.41'}],['path',{d:'m19.07 4.93-1.41 1.41'}]]
+};
+const SOL = [
+  {n:'Energía temporal', d:'[1 línea: proyectos, construcción, puesta en marcha y peaks de demanda]', ic:'timer'},
+  {n:'Energía de emergencia', d:'[1 línea: respuesta rápida ante fallas y contingencias]', ic:'siren'},
+  {n:'Transición energética', d:'[1 línea: solar, BESS e híbridos para reducir emisiones y consumo de combustible]', ic:'leaf'}
+];
+const IND = [
+  {n:'Minería', d:'[1 línea: desafío energético de la industria]', img:'assets/foto-gen-norte.png', pos:'35% 60%', ic:'pickaxe'},
+  {n:'Energía y utilities', d:'[1 línea: desafío energético de la industria]', img:'assets/foto-gen-bo.png', pos:'center 75%', ic:'zap'},
+  {n:'Oil & gas', d:'[1 línea: desafío energético de la industria]', img:'assets/foto-gen-bolivia.png', pos:'58% 50%', ic:'flame'},
+  {n:'Data center', d:'[1 línea: desafío energético de la industria]', img:'assets/foto-generadores.png', pos:'72% 50%', ic:'server'},
+  {n:'Industrial y otros sectores', d:'[1 línea: desafío energético de la industria]', img:'assets/foto-agro.png', pos:'40% 50%', ic:'factory'}
+];
+const TECH = [{n:'Diésel',ic:'droplet'},{n:'Gas natural',ic:'flame'},{n:'GNL/GNC',ic:'snow'},{n:'Ad Gas',ic:'flame'},{n:'GLP',ic:'cyl'},{n:'Gas de pozo',ic:'well'},{n:'Cogeneración',ic:'cycle'},{n:'BESS',ic:'battery'},{n:'Híbridos',ic:'sun'}];
+const LOGOS = ['Logo cliente','Logo cliente','Logo cliente','Logo cliente','Logo cliente','Logo partner','Logo partner','Logo partner'];
+const MIX = [{n:'Solar',on:true},{n:'BESS',on:true},{n:'Híbridos',on:true},{n:'Diésel',on:false}];
+const OP = [{n:'Chile', c:'cl', tel:'+56 2 0000 0000'},{n:'Bolivia', c:'bo', tel:'+591 3 000 0000'},{n:'Perú', c:'pe', tel:'+51 1 000 0000'}];
+const EXP = [{n:'Ecuador', c:'ec', tel:'+593 2 000 0000'},{n:'Colombia', c:'co', tel:'+57 601 000 0000'},{n:'Argentina', c:'ar', tel:'+54 11 0000 0000'}];
+const POOL = Array.from({length:20}, (_, i) => i < 16 ? 'Cliente ' + String(i + 1).padStart(2, '0') : 'Partner ' + String(i - 15).padStart(2, '0'));
+const E_OUT = 'cubic-bezier(0.23,1,0.32,1)', E_IN = 'cubic-bezier(0.22,1,0.36,1)';
+const RING = 40.84;
+
+class Component extends DCLogic {
+  state = { w: window.innerWidth, scrolled: false, menu: null, lock: false, mOpen: false, mAcc: null, ind: 0, heroDark: true, hdrDark: true, indPaused: false, q: '', paused: false };
+  rootRef = React.createRef(); heroRef = React.createRef(); gridHostRef = React.createRef(); mediaRef = React.createRef(); heroImgRef = React.createRef();
+  railRef = React.createRef(); lineRef = React.createRef(); logoRef = React.createRef(); indRef = React.createRef(); tabsRef = React.createRef(); indBarRef = React.createRef();
+  techBoxRef = React.createRef(); marqueeRef = React.createRef(); hViewRef = React.createRef(); hTrackRef = React.createRef(); hBarRef = React.createRef(); fxRef = React.createRef(); glowRef = React.createRef(); loaderRef = React.createRef(); solGridRef = React.createRef(); footRef = React.createRef(); hStickyRef = React.createRef(); hLineRef = React.createRef(); railRRef = React.createRef(); techTrackRef = React.createRef();
+  vis = { logo: false, tech: false, ind: false }; phase = 0; poolIx = 0;
+
+  icon(n, s = 20) {
+    return React.createElement('svg', { width: s, height: s, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round', style: { display: 'block', flex: 'none' }, 'aria-hidden': 'true' },
+      P[n].map(([t, a], i) => React.createElement(t, { key: i, ...a })));
+  }
+  arrowIc() {
+    return React.createElement('svg', { width: 16, height: 16, viewBox: '0 0 16 16', fill: 'none', stroke: 'currentColor', strokeWidth: 1.5, strokeLinecap: 'round', strokeLinejoin: 'round', 'data-arr': '', 'aria-hidden': 'true', style: { display: 'block', flex: 'none', color: '#B8BAB9', transition: 'color 180ms cubic-bezier(.2,.7,.2,1)' } },
+      React.createElement('path', { d: 'M3.5 8h7.5', 'data-shaft': '', pathLength: 1, strokeDasharray: '1', strokeDashoffset: '1' }),
+      React.createElement('path', { d: 'M7.5 4.5 11 8l-3.5 3.5', 'data-head': '' }));
+  }
+
+  componentDidMount() {
+    this.reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const q = new URLSearchParams(location.search).get('menu');
+    if (q === 'soluciones' || q === 'industrias') this.setState({ menu: q, lock: true });
+    if (q === 'mobile') this.setState({ mOpen: true });
+    this.onScroll = () => { const s = window.scrollY > 8; if (s !== this.state.scrolled) this.setState({ scrolled: s }); this.updateLine(); this.updateH(); };
+    this.onResize = () => { if (window.innerWidth !== this.state.w) this.setState({ w: window.innerWidth }); this.schedule(); };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onResize);
+    if (matchMedia('(hover:hover) and (pointer:fine)').matches) {
+      const pick = e => e.target.closest && e.target.closest('[data-arrow]');
+      this.onOver = e => { const a = pick(e); if (a && !a.contains(e.relatedTarget)) this.arrow(a, true); };
+      this.onOut = e => { const a = pick(e); if (a && !a.contains(e.relatedTarget)) this.arrow(a, false); };
+      this.rootRef.current.addEventListener('mouseover', this.onOver);
+      this.rootRef.current.addEventListener('mouseout', this.onOut);
+    }
+    this.io = new IntersectionObserver(es => es.forEach(e => {
+      const k = e.target.getAttribute('data-io'); this.vis[k] = e.isIntersecting;
+      if (k === 'logo' && this.marq) e.isIntersecting ? this.marq.play() : this.marq.pause();
+      if (k === 'tech' && this.techAnim) e.isIntersecting ? this.techAnim.play() : this.techAnim.pause();
+      if (k === 'ind') this.syncRing();
+      if (k === 'hero') (this.lAnims || []).forEach(a => e.isIntersecting ? a.play() : a.pause());
+    }));
+    [['logo', this.logoRef], ['tech', this.techBoxRef], ['ind', this.indRef], ['hero', this.heroRef]].forEach(([k, r]) => { if (r.current) { r.current.setAttribute('data-io', k); this.io.observe(r.current); } });
+    if (document.fonts) document.fonts.ready.then(() => this.schedule());
+    this.fillLogos();
+    this.decorate();
+    this.runLoader();
+    requestAnimationFrame(() => { this.sizeH(); this.buildGrid(true); this.buildLine(); this.setupReveal(); });
+    this.ro = new ResizeObserver(() => this.schedule()); this.ro.observe(this.rootRef.current);
+    window.addEventListener('load', () => this.schedule());
+    this.startCircuits();
+    this.startLeaks();
+    this.setupGlow(); this.setupCardHover();
+    this.tipT = setTimeout(() => { this.setState({ chatTip: true }, () => { const t = this.rootRef.current && this.rootRef.current.querySelector('[data-tip]'); t && !this.reduced && t.animate([{ opacity: 0, transform: 'translateX(8px) scale(.96)', filter: 'blur(4px)' }, { opacity: 1, transform: 'none', filter: 'blur(0px)' }], { duration: 500, easing: 'cubic-bezier(0.22,1,0.36,1)' }); }); }, 2500);
+    this.setupSmooth();
+    { const v = this.heroImgRef.current; if (v) { v.muted = true; v.defaultMuted = true; v.playsInline = true; v.loop = true; const pl = v.play(); if (pl && pl.catch) pl.catch(() => {}); } }
+    this.logoTimer = setInterval(() => this.swapLogos(), 3200);
+    if (this.marqueeRef.current && !this.reduced) { this.marq = this.marqueeRef.current.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-50%)' }], { duration: 48000, iterations: Infinity, easing: 'linear' }); this.marq.pause(); }
+  }
+  componentDidUpdate(pp, ps) {
+    const st = this.state;
+    pp = pp || this._pp || {}; ps = ps || this._ps || {};
+    this._pp = { ...this.props }; this._ps = { ...st };
+    if (ps.ind !== st.ind) { this.startInd(); this.moveInd(); }
+    if (ps.indPaused !== st.indPaused) this.syncRing();
+    if (ps.q !== st.q) this.startTech();
+    if (ps.w !== st.w) { setTimeout(() => this.fillLogos(), 0); this.schedule(); }
+    if (pp.autoAdvance !== this.props.autoAdvance) this.startInd();
+    if (pp.showRails !== this.props.showRails) this.schedule();
+    this.decorate();
+    if (this.rvIO) this.setupReveal();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onResize);
+    this.io && this.io.disconnect(); this.rvIO && this.rvIO.disconnect(); this.ro && this.ro.disconnect(); this.pulse && this.pulse.cancel(); (this.circ || []).forEach(a => a.cancel());
+    clearInterval(this.logoTimer); clearTimeout(this.tipT); cancelAnimationFrame(this.glRaf); this.onGlow && window.removeEventListener('mousemove', this.onGlow);
+    if (this.onWheel) { window.removeEventListener('wheel', this.onWheel); window.removeEventListener('scroll', this.onNativeScroll); cancelAnimationFrame(this.smRaf); document.documentElement.style.scrollBehavior = ''; }
+    [this.zoom, ...(this.leaks || []), this.marq, this.techAnim, this.ringAnim, ...(this.lAnims || [])].forEach(a => a && a.cancel());
+  }
+  schedule() { cancelAnimationFrame(this.raf); this.raf = requestAnimationFrame(() => { this.sizeH(); this.buildGrid(true); this.buildLine(); }); }
+
+  arrow(a, on) {
+    const svg = a.querySelector('[data-arr]'); if (!svg) return;
+    svg.style.color = on ? '#7E8180' : '#B8BAB9';
+    const o = { duration: 180, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' };
+    svg.querySelector('[data-shaft]').animate([{ strokeDashoffset: on ? 1 : 0 }, { strokeDashoffset: on ? 0 : 1 }], o);
+    svg.querySelector('[data-head]').animate([{ transform: `translateX(${on ? 0 : 1.5}px)` }, { transform: `translateX(${on ? 1.5 : 0}px)` }], o);
+  }
+
+  decorate() {
+    if (this.reduced) return;
+    const r = this.rootRef.current; if (!r) return;
+    r.querySelectorAll('[data-live]:not([data-on])').forEach(el => { el.setAttribute('data-on', ''); el.animate([{ transform: 'scale(.3)', opacity: .9 }, { transform: 'scale(1.8)', opacity: 0 }], { duration: 2000, iterations: Infinity, easing: 'ease-out' }); });
+    r.querySelectorAll('[data-dot]:not([data-on])').forEach(el => { el.setAttribute('data-on', ''); el.animate([{ transform: 'translateY(0)', opacity: .45 }, { transform: 'translateY(-3px)', opacity: 1 }, { transform: 'translateY(0)', opacity: .45 }], { duration: 1200, iterations: Infinity, easing: 'ease-in-out', delay: +el.getAttribute('data-dot') * 160 }); });
+  }
+
+  sizeH() {
+    const sec = this.indRef.current, v = this.hViewRef.current, t = this.hTrackRef.current; if (!sec || !v || !t) return;
+    if (this.touch === undefined) this.touch = matchMedia('(hover:none) and (pointer:coarse)').matches;
+    if (this.touch) {
+      const st = this.hStickyRef.current;
+      if (st) { st.style.position = 'relative'; st.style.height = 'auto'; st.style.minHeight = '0'; st.style.padding = 'var(--sec) 0 calc(var(--sec) - 8px)'; }
+      sec.style.height = ''; this.hDist = 0;
+      v.style.overflowX = 'auto'; v.style.scrollSnapType = 'x mandatory'; v.style.scrollbarWidth = 'none'; v.style.webkitOverflowScrolling = 'touch';
+      t.style.transform = 'none'; [...t.children].forEach(c => { c.style.scrollSnapAlign = 'start'; c.style.width = 'min(82vw,440px)'; });
+      t.style.scrollPaddingLeft = 'var(--gut)'; v.style.scrollPaddingLeft = 'var(--gut)';
+      if (!this.onHScroll) { this.onHScroll = () => this.updateH(); v.addEventListener('scroll', this.onHScroll, { passive: true }); }
+      this.updateH(); return;
+    }
+    this.hDist = Math.max(0, t.scrollWidth - v.clientWidth);
+    const hh = Math.max(window.innerHeight, 560) + this.hDist + 'px';
+    if (sec.style.height !== hh) sec.style.height = hh;
+    this.updateH();
+  }
+  updateH() {
+    const sec = this.indRef.current, t = this.hTrackRef.current; if (!sec || !t) return;
+    const r = sec.getBoundingClientRect(), hd = this.hDist || 0, s = -r.top;
+    const pr = hd > 0 ? Math.min(1, Math.max(0, s / hd)) : 0;
+    const tx = this.touch ? -(this.hViewRef.current ? this.hViewRef.current.scrollLeft : 0) : -pr * hd;
+    if (!this.touch) t.style.transform = `translate3d(${tx}px,0,0)`;
+    const vw = this.hViewRef.current ? this.hViewRef.current.clientWidth : window.innerWidth;
+    if (!this.reduced) [...t.children].forEach(card => {
+      if (!card.offsetWidth) return;
+      const d = (tx + card.offsetLeft + card.offsetWidth / 2 - vw / 2) / (vw * 0.55);
+      const ad = Math.min(Math.abs(d), 1.6);
+      card.style.transformOrigin = d < 0 ? 'right center' : 'left center';
+      card.style.transform = `perspective(1400px) rotateY(${(-Math.max(-1.6, Math.min(1.6, d)) * 9).toFixed(2)}deg) scale(${(1 - ad * 0.07).toFixed(3)})`;
+      card.style.opacity = Math.max(0.3, 1 - Math.max(0, ad - 0.6) * 0.8).toFixed(3);
+      card.style.filter = `brightness(${(1 - Math.max(0, ad - 0.5) * 0.35).toFixed(3)})`;
+      const hv = !!card._hov, img = card.querySelector('img'); if (img) { img.style.transition = 'transform 450ms cubic-bezier(0.23,1,0.32,1),filter 450ms ease'; img.style.transform = `translateX(${(-Math.max(-1.6, Math.min(1.6, d)) * 5).toFixed(2)}%) scale(${hv ? 1.2 : 1.14})`; img.style.filter = hv ? 'brightness(1.12) saturate(1.08)' : ''; }
+      const g = card.children[1]; if (g) { g.style.transition = 'transform 350ms cubic-bezier(0.23,1,0.32,1)'; g.style.transform = `translateY(${(Math.max(0, ad - 0.35) * 26 - (hv ? 10 : 0)).toFixed(1)}px)`; g.style.opacity = Math.max(0, 1 - Math.max(0, ad - 0.55) * 1.1).toFixed(3); }
+    });
+    const I = this.inner; if (!I) return;
+    const Hh = I.rr - I.rl;
+    const A = this.anchor(), H = I.L - I.by - Hh, s1 = I.by - A, s2 = Math.max(hd, s1 + 1), s3 = hd + Math.max(1, I.H - A);
+    let f;
+    if (s <= s1) f = Math.max(0, A + s);
+    else if (s <= s2) f = I.by + ((s - s1) / (s2 - s1)) * Hh;
+    else f = I.by + Hh + Math.min(1, (s - s2) / Math.max(1, s3 - s2)) * H;
+    f = Math.min(f, I.L);
+    I.f.setAttribute('stroke-dasharray', `${f} ${I.L + 10}`);
+    let hx, hy;
+    if (f <= I.by) { hx = I.rl; hy = f; } else if (f <= I.by + Hh) { hx = I.rl + (f - I.by); hy = I.by; } else { hx = I.rr; hy = I.by + (f - I.by - Hh); }
+    I.h.setAttribute('opacity', f > 0 && f < I.L ? '1' : '0');
+    I.h.querySelectorAll('circle').forEach(c => { c.setAttribute('cx', hx); c.setAttribute('cy', hy); });
+    I.cs.forEach(c => c.setAttribute('fill', f >= +c.getAttribute('data-c') ? '#00C0A3' : '#0B2A24'));
+  }
+
+  setupSmooth() {
+    if (this.reduced || !matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    document.documentElement.style.scrollBehavior = 'auto';
+    const s = this.sm = { cur: window.scrollY, tgt: window.scrollY, run: false };
+    const max = () => document.documentElement.scrollHeight - window.innerHeight;
+    let last = 0;
+    const loop = now => {
+      const dt = last ? Math.min(50, now - last) : 16.7; last = now;
+      s.cur += (s.tgt - s.cur) * (1 - Math.pow(1 - 0.042, dt / 16.7));
+      if (Math.abs(s.tgt - s.cur) < 0.5) { s.cur = s.tgt; s.run = false; }
+      window.scrollTo(0, s.cur);
+      if (s.run) this.smRaf = requestAnimationFrame(loop); else { last = 0; if (this.toContact) { this.toContact = false; this.arriveContact(); } }
+    };
+    const go = () => { if (!s.run) { s.run = true; this.smRaf = requestAnimationFrame(loop); } };
+    this.onWheel = e => {
+      const ld = this.loaderRef.current; if (ld && ld.style.display !== 'none') { e.preventDefault(); return; }
+      if (e.ctrlKey || this.state.mOpen || this.state.menu || Math.abs(e.deltaX) > Math.abs(e.deltaY)) return;
+      e.preventDefault();
+      const d = e.deltaMode === 1 ? e.deltaY * 32 : e.deltaMode === 2 ? e.deltaY * window.innerHeight : e.deltaY;
+      if (!s.run) s.cur = s.tgt = window.scrollY;
+      s.tgt = Math.max(0, Math.min(max(), s.tgt + d * 1.15));
+      go();
+    };
+    this.onNativeScroll = () => { if (!s.run) s.cur = s.tgt = window.scrollY; };
+    this.onAnchor = e => {
+      const a = e.target.closest && e.target.closest('a[href^="#"]'); if (!a) return;
+      const id = a.getAttribute('href').slice(1); if (!id) return;
+      const el = document.getElementById(id); if (!el) return;
+      e.preventDefault();
+      if (!s.run) s.cur = window.scrollY;
+      s.tgt = Math.max(0, Math.min(max(), el.getBoundingClientRect().top + window.scrollY));
+      this.toContact = id === 'contacto';
+      go();
+    };
+    window.addEventListener('wheel', this.onWheel, { passive: false });
+    window.addEventListener('scroll', this.onNativeScroll, { passive: true });
+    this.rootRef.current.addEventListener('click', this.onAnchor);
+  }
+  setupDark() {
+    const mq = matchMedia('(prefers-color-scheme: dark)'), root = this.rootRef.current; if (!root) return;
+    const V = { '--bg': '#0E1D19', '--bg2': '#122420', '--ink': '#EAF1EE', '--mut': 'rgba(234,241,238,.68)', '--line': 'rgba(255,255,255,.1)', '--cl': 'rgba(255,255,255,.1)', '--neu': 'linear-gradient(145deg,#17302A,#11241F)', '--neush': '0 0 0 1px rgba(255,255,255,.08),0 6px 16px -6px rgba(0,0,0,.4)', '--chip': '#D7E6E1', '--acc': '#00C0A3' };
+    const apply = () => { this.dark = mq.matches; Object.entries(V).forEach(([k, v]) => this.dark ? root.style.setProperty(k, v) : root.style.removeProperty(k)); this.updateLine && this.updateLine(); this.checkHdr && this.checkHdr(); };
+    apply(); mq.addEventListener && mq.addEventListener('change', apply);
+  }
+  setupGlow() {
+    const gl = this.glowRef.current; if (!gl || this.reduced || !matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    let tx = -999, ty = -999, x = -999, y = -999, vis = false;
+    const inR = (el, px, py) => { if (!el) return false; const r = el.getBoundingClientRect(); return px >= r.left && px <= r.right && py >= r.top && py <= r.bottom; };
+    const darkAt = (px, py) => (this.heroOn && inR(this.heroRef.current, px, py)) || (this.indOn && inR(this.indRef.current, px, py)) || (this.footOn && inR(this.footRef.current, px, py)) || (this.geo && (this.geo.blocks || []).some(b => b.el._on && inR(b.el, px, py)));
+    this.onGlow = e => { tx = e.clientX; ty = e.clientY; if (x < -900) { x = tx; y = ty; } };
+    window.addEventListener('mousemove', this.onGlow, { passive: true });
+    const loop = () => { x += (tx - x) * 0.16; y += (ty - y) * 0.16; gl.style.transform = `translate3d(${x}px,${y}px,0)`; const v = tx > -900 && !!darkAt(tx, ty); if (v !== vis) { vis = v; gl.style.opacity = v ? '1' : '0'; } this.glRaf = requestAnimationFrame(loop); };
+    this.glRaf = requestAnimationFrame(loop);
+  }
+  setupCardHover() {
+    const t = this.hTrackRef.current; if (!t || !matchMedia('(hover:hover) and (pointer:fine)').matches) return;
+    const set = (e, on) => { const c = e.target.closest && e.target.closest('a'); if (!c || c.parentElement !== t || c.contains(e.relatedTarget)) return; c._hov = on; this.updateH(); };
+    t.addEventListener('mouseover', e => set(e, true)); t.addEventListener('mouseout', e => set(e, false));
+  }
+  arriveContact() {
+    const sec = document.getElementById('contacto'); if (!sec || this.reduced) return;
+    const h2 = sec.querySelector('h2'); if (h2) this.charge(h2, 0);
+    const btn = [...sec.querySelectorAll('a')].find(a => /Solicitar/.test(a.textContent));
+    if (btn) btn.animate([{ boxShadow: '0 0 0 0 rgba(0,192,163,.6)' }, { boxShadow: '0 0 0 22px rgba(0,192,163,0)' }], { duration: 900, delay: 500, iterations: 2, easing: 'cubic-bezier(0.23,1,0.32,1)', composite: 'add' });
+    sec.querySelectorAll('[data-pulse-cta]').forEach((p, i) => { const L = p.getTotalLength(); p.animate([{ strokeDasharray: `${L}`, strokeDashoffset: L, opacity: 1 }, { strokeDasharray: `${L}`, strokeDashoffset: 0, opacity: 1 }], { duration: 700, delay: 150 + (i % 6) * 60, easing: 'cubic-bezier(0.65,0,0.35,1)' }); });
+  }
+  startLeaks() {
+    const r = this.rootRef.current; if (!r || this.reduced) return;
+    const q = k => r.querySelector(`[data-leak="${k}"]`); const a = q('a'), b = q('b');
+    this.leaks = [
+      a && a.animate([{ transform: 'scale(1) translate(0,0)', opacity: .62 }, { transform: 'scale(1.15) translate(-4%,3%)', opacity: .92 }], { duration: 9000, iterations: Infinity, direction: 'alternate', easing: 'ease-in-out' }),
+      b && b.animate([{ transform: 'scale(1.12) translate(3%,-3%)', opacity: .75 }, { transform: 'scale(1) translate(0,0)', opacity: .48 }], { duration: 11500, iterations: Infinity, direction: 'alternate', easing: 'ease-in-out' })
+    ].filter(Boolean);
+    const md = this.mediaRef.current;
+    if (md) { const base = '0 0 0 1px rgba(27,36,33,.08),0 24px 48px -16px rgba(11,42,36,.35),0 2px 6px rgba(11,42,36,.08)';
+      this.leaks.push(md.animate([{ boxShadow: base + ',50px -50px 120px -30px rgba(255,190,90,.35),-60px 60px 160px -40px rgba(0,192,163,.5)' }, { boxShadow: base + ',80px -80px 180px -20px rgba(255,190,90,.6),-50px 50px 130px -40px rgba(0,192,163,.32)' }], { duration: 9000, iterations: Infinity, direction: 'alternate', easing: 'ease-in-out' })); }
+  }
+  startCircuits() {
+    if (this.reduced) return;
+    this.circ = [...this.heroRef.current.querySelectorAll('[data-pulse]'), ...this.rootRef.current.querySelectorAll('[data-pulse-cta]')].map((p, i) => {
+      const L = p.getTotalLength(); p.style.strokeDasharray = `70 ${L + 140}`;
+      return p.animate([{ strokeDashoffset: 70 }, { strokeDashoffset: -L }], { duration: 2400 + i * 520, delay: 1400 + i * 700, iterations: Infinity, easing: 'cubic-bezier(.45,0,.25,1)', fill: 'backwards' });
+    });
+  }
+
+  buildInner() {
+    const st = this.hStickyRef.current, host = this.hLineRef.current; this.inner = null;
+    if (!st || !host || !this.railRef.current || !this.railRRef.current) return;
+    const turn = st.querySelector('[data-turn]'); if (!turn) return;
+    const sr = st.getBoundingClientRect();
+    const rl = Math.round(this.railRef.current.getBoundingClientRect().left - sr.left) + .5;
+    const rr = Math.round(this.railRRef.current.getBoundingClientRect().left - sr.left) + .5;
+    const by = Math.round(turn.getBoundingClientRect().top - sr.top) + .5, H = st.offsetHeight, W = st.offsetWidth;
+    const d = `M${rl} 0 V${by} H${rr} V${H}`, L = by + (rr - rl) + (H - by);
+    host.innerHTML = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="position:absolute;left:0;top:0;overflow:visible">
+      <defs><filter id="ef2-glow-i" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="4"/></filter></defs>
+      <path d="${d}" fill="none" stroke="rgba(0,192,163,.22)" stroke-width="1"/>
+      <path data-f d="${d}" fill="none" stroke="#00C0A3" stroke-width="1.5" stroke-dasharray="0 ${L + 10}"/>
+      <circle data-c="${by}" cx="${rl}" cy="${by}" r="4" fill="#0B2A24" stroke="#00C0A3" stroke-width="1.5"/>
+      <circle data-c="${by + (rr - rl)}" cx="${rr}" cy="${by}" r="4" fill="#0B2A24" stroke="#00C0A3" stroke-width="1.5"/>
+      <g data-h opacity="0"><circle cx="${rl}" cy="0" r="10" fill="#00C0A3" opacity=".5" filter="url(#ef2-glow-i)"/><circle cx="${rl}" cy="0" r="3.5" fill="#00C0A3"/></g>
+    </svg>`;
+    this.inner = { H, rl, rr, by, L, f: host.querySelector('[data-f]'), h: host.querySelector('[data-h]'), cs: [...host.querySelectorAll('[data-c]')] };
+  }
+
+  buildLine() {
+    const root = this.rootRef.current, host = this.lineRef.current, rail = this.railRef.current, railR = this.railRRef.current, sec = this.indRef.current;
+    if (!root || !host || !rail) return;
+    if (this.props.showRails === false) { host.innerHTML = ''; this.geo = null; if (this.hLineRef.current) this.hLineRef.current.innerHTML = ''; this.inner = null; return; }
+    const rr = root.getBoundingClientRect();
+    const xL = Math.round(rail.getBoundingClientRect().left - rr.left) + .5;
+    const xR = railR ? Math.round(railR.getBoundingClientRect().left - rr.left) + .5 : xL;
+    let sT = Infinity, sB = Infinity;
+    if (sec) { const r = sec.getBoundingClientRect(); sT = Math.round(r.top - rr.top); sB = Math.round(r.bottom - rr.top); }
+    const nodes = [...root.querySelectorAll('[data-node]')].map(el => {
+      const r = el.getBoundingClientRect(), y = Math.round(r.top - rr.top + Math.min(r.height / 2, 18)), right = y > sB;
+      return { y, x: right ? xR : xL, x2: el.getAttribute('data-node') === 'nb' || right ? 0 : Math.round(r.left - rr.left - 10) };
+    }).filter(n => n.y > 0).sort((a, b) => a.y - b.y);
+    if (nodes.length < 2) return;
+    const W = Math.round(rr.width), H = Math.round(root.scrollHeight);
+    const y0 = nodes[0].y, yEnd = nodes[nodes.length - 1].y;
+    const left = sec ? `M${xL} ${y0} V${sT}` : `M${xL} ${y0} V${yEnd}`;
+    const right = sec && yEnd > sB ? `M${xR} ${sB} V${yEnd}` : '';
+    const br = nodes.filter(n => n.x2 > n.x + 6).map(n => `M${n.x} ${n.y} H${n.x2}`).join(' ');
+    host.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="position:absolute;left:0;top:0;overflow:visible">
+      <defs><clipPath id="ef2-clip"><rect x="0" y="0" width="${W}" height="0"/></clipPath>
+      <filter id="ef2-glow" x="-200%" y="-200%" width="500%" height="500%"><feGaussianBlur stdDeviation="4"/></filter></defs>
+      <path d="${left} ${right} ${br}" fill="none" stroke="rgba(0,166,141,.22)" stroke-width="1"/>
+      <path data-pm d="${left}" fill="none" stroke="#00C0A3" stroke-width="2" stroke-linecap="round" opacity=".7"/>
+      <g clip-path="url(#ef2-clip)"><path d="${left} ${right} ${br}" fill="none" stroke="#00C0A3" stroke-width="1.5"/></g>
+      ${nodes.map((n, i) => `<circle data-n="${n.y}" cx="${n.x}" cy="${n.y}" r="${i === 0 || i === nodes.length - 1 ? 5 : 4}" fill="#ffffff" stroke="#00C0A3" stroke-width="1.5"/>`).join('')}
+      <g data-head opacity="0"><circle cx="${xL}" cy="0" r="10" fill="#00C0A3" opacity=".45" filter="url(#ef2-glow)"/><circle cx="${xL}" cy="0" r="3.5" fill="#00C0A3"/></g>
+    </svg>`;
+    const hB = this.heroRef.current ? this.heroRef.current.offsetHeight : 0;
+    let cT = Infinity, cB = Infinity; const sg = this.solGridRef.current;
+    if (sg) { const r = sg.getBoundingClientRect(); cT = Math.round(r.top - rr.top); cB = Math.round(r.bottom - rr.top); }
+    const blocks = [...root.querySelectorAll('[data-fillblock]')].map(el => { const r = el.getBoundingClientRect(); return { el, t: Math.round(r.top - rr.top), b: Math.round(r.bottom - rr.top) }; });
+    this.geo = { blocks, hB, cT, cB, y0, yEnd, sT, sB, xL, xR, rect: host.querySelector('#ef2-clip rect'), head: host.querySelector('[data-head]'), dots: [...host.querySelectorAll('[data-n]')] };
+    this.pulse && this.pulse.cancel(); this.pulse = null;
+    if (!this.reduced) {
+      const pm = host.querySelector('[data-pm]'), L = (sec ? sT : yEnd) - y0;
+      if (L > 0) { pm.setAttribute('stroke-dasharray', `90 ${L + 200}`); this.pulse = pm.animate([{ strokeDashoffset: 90 }, { strokeDashoffset: -L - 10 }], { duration: Math.max(4000, L * 2.2), iterations: Infinity, easing: 'linear' }); }
+    }
+    this.buildInner();
+    this.updateLine(); this.updateH();
+  }
+
+  anchor() { return Math.round(Math.max(window.innerHeight, 560) * 0.6); }
+  updateLine() {
+    const g = this.geo; if (!g || !g.rect) return;
+    const A = this.anchor();
+    const top = this.rootRef.current.getBoundingClientRect().top + window.scrollY;
+    const reveal = window.scrollY + A - top;
+    g.rect.setAttribute('height', Math.max(0, reveal));
+    const inLeft = reveal > g.y0 && reveal <= Math.min(g.sT, g.yEnd + 40);
+    const inRight = reveal >= g.sB && reveal < g.yEnd + 40;
+    const hy = inRight ? Math.min(reveal, g.yEnd) : Math.min(Math.max(reveal, g.y0), g.sT);
+    const hx = inRight ? g.xR : g.xL;
+    g.head.setAttribute('opacity', inLeft || inRight ? '1' : '0');
+    g.head.querySelectorAll('circle').forEach(c => { c.setAttribute('cy', hy); c.setAttribute('cx', hx); });
+    g.dots.forEach(d => d.setAttribute('fill', reveal >= +d.getAttribute('data-n') ? '#00C0A3' : (this.dark ? '#0E1D19' : '#ffffff')));
+    this.want('foot', reveal >= g.yEnd - 2 || !!this.dark, false, o => this.setFoot(o));
+    this.checkHdr();
+    if (g.hB) this.want('hero', reveal < g.hB - 2 || !!this.dark, false, o => this.setHero(o));
+    (g.blocks || []).forEach((b, i) => this.want('blk' + i, reveal >= b.t - 2 && reveal < b.b - 2, reveal >= b.b - 2, (o, x) => this.setBlock(b.el, o, x)));
+    if (isFinite(g.sT)) this.want('ind', reveal >= g.sT - 2 && reveal < g.sB - 2, reveal >= g.sB - 2, (o, x) => this.setInd(o, x));
+  }
+  checkHdr() {
+    const y = 34, inR = el => { if (!el) return false; const r = el.getBoundingClientRect(); return r.top <= y && r.bottom >= y; };
+    let dk = !!this.dark || (this.heroOn && inR(this.heroRef.current)) || (this.indOn && inR(this.indRef.current)) || (this.footOn && inR(this.footRef.current));
+    if (!dk && this.geo) dk = (this.geo.blocks || []).some(b => b.el._on && inR(b.el));
+    if (!!dk !== this.state.hdrDark) this.setState({ hdrDark: !!dk });
+  }
+  want(key, on, exit, fn) {
+    const w = this._w || (this._w = {}), s = w[key] || (w[key] = {});
+    if (s.cur === undefined) { s.cur = on; fn(on, exit); return; }
+    if (on === s.cur) { if (s.pend !== undefined) { clearTimeout(s.t); s.pend = undefined; } return; }
+    s.exit = exit; if (s.pend === on) return;
+    clearTimeout(s.t); s.pend = on;
+    s.t = setTimeout(() => { s.cur = s.pend; s.pend = undefined; fn(s.cur, s.exit); this.checkHdr(); }, 140);
+  }
+  fillAnim(f, on, x, y, R, first) {
+    const target = on ? R : 0;
+    if (first) { f._a && f._a.cancel(); f.style.clipPath = `circle(${target}px at ${x}px ${y}px)`; return; }
+    let r0 = on ? 0 : R, ox = x, oy = y;
+    const mm = /circle\(([\d.]+)px at ([\d.-]+)px ([\d.-]+)px\)/.exec(getComputedStyle(f).clipPath || '');
+    if (f._a && f._a.playState === 'running' && mm) { r0 = +mm[1]; ox = +mm[2]; oy = +mm[3]; }
+    f._a && f._a.cancel();
+    const frac = Math.min(1, Math.abs(target - r0) / R);
+    const to = `circle(${target}px at ${ox}px ${oy}px)`;
+    f.style.clipPath = to;
+    f._a = f.animate([{ clipPath: `circle(${r0}px at ${ox}px ${oy}px)` }, { clipPath: to }], { duration: this.reduced ? 300 : Math.max(260, 1100 * frac), easing: 'cubic-bezier(0.65,0,0.35,1)' });
+  }
+  setHero(on) {
+    const hero = this.heroRef.current; if (!hero || this.heroOn === on) return;
+    const first = this.heroOn === undefined; this.heroOn = on;
+    const f = hero.querySelector('[data-hfill]'); if (!f) return;
+    const w = hero.offsetWidth, hh = hero.offsetHeight, x = this.geo ? this.geo.xL : 0, R = Math.hypot(w, hh) + 40;
+    const from = `circle(0px at ${x}px ${hh}px)`, to = `circle(${R}px at ${x}px ${hh}px)`;
+    this.fillAnim(f, on, x, hh, R, first);
+    const DK = {"--hi":"#ffffff","--hm":"rgba(255,255,255,.72)","--hh":"#00C0A3","--tb":"rgba(255,255,255,.08)","--tc":"#BFF3EA","--ts":"inset 0 1px 0 rgba(255,255,255,.12),0 0 0 1px rgba(255,255,255,.16)","--sb":"rgba(255,255,255,.08)","--sc":"#ffffff","--ss":"inset 0 1px 0 rgba(255,255,255,.14),0 0 0 1px rgba(255,255,255,.2)","--gs":"rgba(0,192,163,.2)","--gc":"rgba(0,192,163,.55)"};
+    const set = () => Object.entries(DK).forEach(([k, v]) => on ? hero.style.setProperty(k, v) : hero.style.removeProperty(k));
+    clearTimeout(hero._vt); first ? set() : (hero._vt = setTimeout(set, on ? 250 : 400));
+    if (this.state.heroDark !== on) this.setState({ heroDark: on });
+  }
+  setBlock(grid, on, exit) {
+    if (!grid || grid._on === on) return; const first = grid._on === undefined; grid._on = on;
+    const f = grid.querySelector('[data-gfill]'); if (!f) return;
+    const fromBottom = on ? !!grid._back : !!exit; if (!on) grid._back = !!exit;
+    const bk = this.geo && (this.geo.blocks || []).find(b => b.el === grid), right = !!(bk && this.geo && bk.t > this.geo.sB);
+    const w = grid.offsetWidth, hh = grid.offsetHeight, x = right ? w : 0, y = fromBottom ? hh : 0, R = Math.hypot(w, hh) + 20;
+    this.fillAnim(f, on, x, y, R, typeof first !== 'undefined' && first);
+    clearTimeout(grid._vt); grid._vt = setTimeout(() => { if (on) { grid.style.setProperty('--ci', '#ffffff'); grid.style.setProperty('--cm', 'rgba(255,255,255,.72)'); grid.style.setProperty('--cl', 'rgba(255,255,255,.12)'); } else { ['--ci', '--cm', '--cl'].forEach(k => grid.style.removeProperty(k)); } }, first ? 0 : on ? 300 : 350);
+  }
+  setCards(on, exit) {
+    const grid = this.solGridRef.current; if (!grid || this.cardsOn === on) return; this.cardsOn = on;
+    const f = grid.querySelector('[data-gfill]'); if (!f) return;
+    const fromBottom = on ? !!this.cardsBack : !!exit; if (!on) this.cardsBack = !!exit;
+    const w = grid.offsetWidth, hh = grid.offsetHeight, x = fromBottom ? w : 0, y = fromBottom ? hh : 0, R = Math.hypot(w, hh) + 20;
+    const from = `circle(0px at ${x}px ${y}px)`, to = `circle(${R}px at ${x}px ${y}px)`;
+    this.fillAnim(f, on, x, y, R, typeof first !== 'undefined' && first);
+    setTimeout(() => { if (on) { grid.style.setProperty('--ci', '#ffffff'); grid.style.setProperty('--cm', 'rgba(255,255,255,.72)'); grid.style.setProperty('--cl', 'rgba(255,255,255,.12)'); } else { ['--ci', '--cm', '--cl'].forEach(k => grid.style.removeProperty(k)); } }, on ? 300 : 350);
+  }
+  setInd(on, exit) {
+    const st = this.hStickyRef.current, sec = this.indRef.current; if (!st || !sec || this.indOn === on) return; const first = this.indOn === undefined; this.indOn = on;
+    const fill = st.querySelector('[data-ifill]'); if (!fill) return;
+    const fromBottom = on ? !!this.indCameBack : !!exit;
+    const x = fromBottom ? (this.inner ? this.inner.rr : st.offsetWidth) : (this.inner ? this.inner.rl : 0);
+    const y = fromBottom ? st.offsetHeight : 0, R = Math.hypot(st.offsetWidth, st.offsetHeight) + 40;
+    if (!on) this.indCameBack = !!exit;
+    const from = `circle(0px at ${x}px ${y}px)`, to = `circle(${R}px at ${x}px ${y}px)`;
+    this.fillAnim(fill, on, x, y, R, first);
+    clearTimeout(sec._vt); sec._vt = setTimeout(() => on ? sec.style.setProperty('--ii', '#ffffff') : sec.style.removeProperty('--ii'), on ? 250 : 0);
+  }
+  setFoot(on) {
+    const ft = this.footRef.current; if (!ft || this.footOn === on) return; const first = this.footOn === undefined; this.footOn = on;
+    const fill = ft.querySelector('[data-fill]'), g = this.geo;
+    const x = g ? g.xR : ft.offsetWidth, y = 18, R = Math.hypot(Math.max(x, ft.offsetWidth - x), ft.offsetHeight) + 40;
+    const from = `circle(0px at ${x}px ${y}px)`, to = `circle(${R}px at ${x}px ${y}px)`;
+    this.fillAnim(fill, on, x, y, R, first);
+    const v = on ? { '--fi': '#ffffff', '--fm': 'rgba(255,255,255,.7)', '--fl': 'rgba(255,255,255,.14)', '--lod': '0', '--lol': '1' } : { '--fi': '', '--fm': '', '--fl': '', '--lod': '', '--lol': '' };
+    clearTimeout(ft._vt); ft._vt = setTimeout(() => Object.entries(v).forEach(([k, val]) => val ? ft.style.setProperty(k, val) : ft.style.removeProperty(k)), on ? 250 : 0);
+  }
+
+  setupReveal() {
+    const root = this.rootRef.current; if (!root || this.reduced) return;
+    if (!this.rvIO) this.rvIO = new IntersectionObserver(es => {
+      const vis = es.filter(e => e.isIntersecting).sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top || a.boundingClientRect.left - b.boundingClientRect.left);
+      vis.forEach((e, i) => { this.rvIO.unobserve(e.target); this.reveal(e.target, Math.min(i, 10) * 80); });
+    }, { threshold: 0.2, rootMargin: '0px 0px -24% 0px' });
+    root.querySelectorAll('[data-reveal]:not([data-rv])').forEach(el => {
+      el.setAttribute('data-rv', '');
+      const k = el.getAttribute('data-reveal');
+      if (k === 'charge' || k === 'power') el.style.opacity = '0';
+      el.querySelectorAll('[data-count]').forEach(c => { if (c.firstChild) c.firstChild.nodeValue = '0'; });
+      this.rvIO.observe(el);
+    });
+  }
+  reveal(el, delay) {
+    const k = el.getAttribute('data-reveal');
+    if (k === 'charge') return this.charge(el, delay);
+    if (k === 'burst') return this.burst(el, delay + 250);
+    el.style.opacity = '';
+    el.animate([
+      { opacity: 0, transform: 'translateY(10px)', filter: 'blur(6px) brightness(1.6)' },
+      { opacity: .75, offset: .22, filter: 'blur(2px) brightness(1.7)' },
+      { opacity: .2, offset: .32 },
+      { opacity: 1, offset: .5, transform: 'translateY(0)', filter: 'blur(0px) brightness(1.15)' },
+      { opacity: 1, transform: 'translateY(0)', filter: 'blur(0px) brightness(1)' }
+    ], { duration: 900, delay, easing: 'ease-out', fill: 'backwards' });
+    el.querySelectorAll('[data-reveal="burst"]').forEach(b => { if (this.rvIO) this.rvIO.unobserve(b); this.burst(b, delay + 350); });
+    el.querySelectorAll('[data-count]').forEach(c => this.countUp(c, delay + 200));
+  }
+  charge(el, delay) {
+    el.style.opacity = ''; el.style.clipPath = '';
+    const D = 950, ease = 'cubic-bezier(0.77,0,0.175,1)';
+    el.animate([{ clipPath: 'inset(-20% 100% -20% 0)', filter: 'blur(3px)' }, { clipPath: 'inset(-20% 0% -20% 0)', filter: 'blur(0px)' }], { duration: D, delay, easing: ease, fill: 'backwards' });
+    const fx = this.fxRef.current, root = this.rootRef.current; if (!fx || !root) return;
+    const r = el.getBoundingClientRect(), rr = root.getBoundingClientRect();
+    const range = document.createRange(); range.selectNodeContents(el);
+    const tw = Math.min(r.width, range.getBoundingClientRect().width || r.width);
+    const s = document.createElement('div');
+    s.style.cssText = `position:absolute;left:${r.left - rr.left}px;top:${r.top - rr.top - 4}px;width:2px;height:${r.height + 8}px;border-radius:2px;background:#9FFBEA;box-shadow:0 0 10px 2px rgba(0,192,163,.85),0 0 28px 8px rgba(0,192,163,.35);opacity:0`;
+    fx.appendChild(s);
+    const a = s.animate([{ transform: 'translateX(0)', opacity: 0 }, { opacity: 1, offset: .08 }, { transform: `translateX(${tw}px)`, opacity: 1, offset: .85 }, { transform: `translateX(${tw + 6}px)`, opacity: 0 }], { duration: D + 120, delay, easing: ease, fill: 'both' });
+    a.onfinish = () => s.remove();
+  }
+  burst(el, delay) {
+    if (el.hasAttribute('data-bd')) return; el.setAttribute('data-bd', '');
+    const base = getComputedStyle(el).boxShadow;
+    el.animate([{ boxShadow: base + ', 0 0 0 0 rgba(0,192,163,.55)' }, { boxShadow: base + ', 0 0 0 18px rgba(0,192,163,0)' }], { duration: 900, delay, easing: 'cubic-bezier(0.23,1,0.32,1)' });
+    el.querySelectorAll('svg path, svg line, svg circle, svg rect, svg polygon').forEach((p, i) => {
+      const L = p.getTotalLength ? p.getTotalLength() : 40;
+      p.animate([{ strokeDasharray: `${L}`, strokeDashoffset: L }, { strokeDasharray: `${L}`, strokeDashoffset: 0 }], { duration: 900, delay: delay + i * 110, easing: 'cubic-bezier(.6,0,.2,1)', fill: 'backwards' });
+    });
+  }
+  countUp(c, delay) {
+    const t = +c.getAttribute('data-count'), node = c.firstChild; if (!node) return;
+    const plus = c.querySelector('span');
+    setTimeout(() => {
+      const t0 = performance.now(), D = 1400;
+      const step = now => { const k = Math.min(1, (now - t0) / D), e = 1 - Math.pow(1 - k, 3); node.nodeValue = String(Math.round(t * e)); if (k < 1) requestAnimationFrame(step); else if (plus) plus.animate([{ opacity: .3, textShadow: '0 0 0 rgba(0,192,163,0)' }, { opacity: 1, textShadow: '0 0 18px rgba(0,192,163,.8)' }, { opacity: 1, textShadow: '0 0 0 rgba(0,192,163,0)' }], { duration: 700 }); };
+      requestAnimationFrame(step);
+    }, delay);
+  }
+
+  runLoader() {
+    const el = this.loaderRef.current; if (!el) { this.heroIn(); return; }
+    const logo = el.querySelector('[data-ll]'), lh = el.querySelector('[data-lline]');
+    { const W = window.innerWidth, H = window.innerHeight, S = 80, cx = W / 2, cy = H / 2;
+      const span = W < 520 ? 2 : 3, ax = cx - span * S, bx = cx + span * S, ly = cy + S;
+      lh.innerHTML = `<svg width="${W}" height="${H}" style="position:absolute;left:0;top:0;overflow:visible">
+        <path d="M${ax} ${ly}H${bx}" fill="none" stroke="rgba(0,192,163,.25)" stroke-width="1.5"/>
+        <path data-lp d="M${ax} ${ly}H${bx}" fill="none" stroke="#00C0A3" stroke-width="2" stroke-linecap="round"/>
+        <circle cx="${ax}" cy="${ly}" r="5" fill="#00C0A3"/>
+        <circle data-lg cx="${bx}" cy="${ly}" r="12" fill="#00C0A3" opacity="0" style="transform-box:fill-box;transform-origin:center"/>
+        <circle data-lb cx="${bx}" cy="${ly}" r="5" fill="#0B2A24" stroke="#00C0A3" stroke-width="1.5"/>
+      </svg>`; }
+    const lp = el.querySelector('[data-lp]'), lb = el.querySelector('[data-lb]'), lg = el.querySelector('[data-lg]');
+    const L = lp.getTotalLength(); lp.style.strokeDasharray = L; lp.style.strokeDashoffset = L;
+    const gh = el.querySelector('[data-lgrid]');
+    if (gh) {
+      const W = window.innerWidth, H = window.innerHeight, S = 80, cx = W / 2, cy = H / 2, ox = cx % S, oy = cy % S;
+      let d = ''; for (let x = ox; x <= W; x += S) d += `M${x} 0V${H}`; for (let y = oy; y <= H; y += S) d += `M0 ${y}H${W}`;
+      const cells = []; for (let x = ox - S; x < W; x += S) for (let y = oy - S; y < H; y += S) { const k = Math.hypot((x + S / 2 - cx) / S, (y + S / 2 - cy) / S); if (k < 5.5) cells.push(`<rect data-d="${k.toFixed(2)}" x="${x + .5}" y="${y + .5}" width="${S - 1}" height="${S - 1}" fill="${Math.random() < .3 ? 'rgba(0,192,163,.05)' : 'none'}" stroke="rgba(0,192,163,.55)" stroke-dasharray="3 4" opacity="0"/>`); }
+      gh.innerHTML = `<svg width="${W}" height="${H}" style="position:absolute;left:0;top:0"><path d="${d}" fill="none" stroke="rgba(0,192,163,.22)" stroke-width="1" stroke-dasharray="3 4" stroke-linecap="square"/><g>${cells.join('')}</g></svg>`;
+      if (!this.reduced) {
+        gh.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 900, easing: 'ease-out', fill: 'both' });
+        const pulse = () => { if (!el.isConnected || el.style.display === 'none') return; gh.querySelectorAll('rect[data-d]').forEach(r => r.animate([{ opacity: 0 }, { opacity: 1, offset: .3 }, { opacity: 0 }], { duration: 420, delay: +r.getAttribute('data-d') * 120, easing: 'ease-out' })); this.lgT = setTimeout(pulse, 2200); };
+        this.lgT = setTimeout(pulse, 300);
+      }
+    }
+    const de = document.documentElement; de.style.overflow = 'hidden';
+    let ready = false, p = 0, done = false;
+    const loaded = document.readyState === 'complete' ? Promise.resolve() : new Promise(r => window.addEventListener('load', r, { once: true }));
+    const vid = this.heroImgRef.current;
+    const vReady = !vid || vid.readyState >= 3 ? Promise.resolve() : new Promise(r => { vid.addEventListener('canplay', r, { once: true }); setTimeout(r, 4000); });
+    Promise.all([loaded, vReady, document.fonts ? document.fonts.ready : null, new Promise(r => setTimeout(r, 1200))]).then(() => { ready = true; });
+    if (logo && !this.reduced) logo.animate([{ opacity: 0, filter: 'blur(8px)', transform: 'translateY(4px)' }, { opacity: 1, filter: 'blur(0px)', transform: 'translateY(0)' }], { duration: 700, easing: 'cubic-bezier(0.22,1,0.36,1)', fill: 'both' });
+    const finish = () => {
+      done = true;
+      lb.setAttribute('fill', '#00C0A3');
+      if (!this.reduced) { lg.animate([{ opacity: .8, transform: 'scale(.4)' }, { opacity: 0, transform: 'scale(2.2)' }], { duration: 700, easing: 'ease-out', fill: 'both' });  }
+      setTimeout(() => {
+        const a = el.animate([{ opacity: 1, transform: 'translateY(0)' }, { opacity: 0, transform: 'translateY(-2%)' }], { duration: this.reduced ? 250 : 650, easing: 'cubic-bezier(0.77,0,0.175,1)', fill: 'forwards' });
+        this.heroIn();
+        a.onfinish = () => { el.style.display = 'none'; de.style.overflow = ''; clearTimeout(this.lgT); };
+      }, this.reduced ? 100 : 450);
+    };
+    const step = () => {
+      if (done) return;
+      const target = ready ? 1 : 0.82;
+      p += (target - p) * (ready ? 0.14 : 0.035);
+      lp.style.strokeDashoffset = L * (1 - p);
+      if (ready && p > 0.995) { lp.style.strokeDashoffset = 0; finish(); return; }
+      requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+  heroIn() {
+    const r = this.rootRef.current; const q = s => r.querySelector(`[data-hero="${s}"]`);
+    if (this.reduced) { ['tag', 'h1', 'lede', 'cta', 'media'].forEach(k => { const el = q(k); el && el.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 300, fill: 'both' }); }); return; }
+    const blur = (el, delay, duration) => el && el.animate([{ opacity: 0, filter: 'blur(10px)', transform: 'translateY(-5px)' }, { opacity: 1, filter: 'blur(0px)', transform: 'translateY(0px)' }], { delay, duration, easing: E_IN, fill: 'both' });
+    blur(q('tag'), 60, 900); blur(q('h1'), 120, 1200); blur(q('lede'), 720, 570); blur(q('cta'), 720, 570);
+    const m = q('media'), t0 = 1025;
+    if (m) {
+      m.style.transformOrigin = '50% 77%';
+      const T = (y, rx, s) => `perspective(3800px) translateY(${y}px) rotateX(${rx}deg) scale(${s})`;
+      m.animate([
+        { offset: 0, opacity: 0, filter: 'blur(11px)', transform: T(104, -60, 1.1) },
+        { offset: .6, opacity: 1, filter: 'blur(0px)', transform: T(0, 0, 1) },
+        { offset: .74, opacity: 1, filter: 'blur(0px)', transform: T(0, 2, 1) },
+        { offset: 1, opacity: 1, filter: 'blur(0px)', transform: T(0, 0, 1) }
+      ], { delay: t0, duration: 1250, easing: E_OUT, fill: 'both' });
+    }
+    const sh = r.querySelector('[data-shimmer]');
+    sh && sh.animate([{ transform: 'translateY(180%) rotate(-7deg)', opacity: 0 }, { transform: 'translateY(60%) rotate(-7deg)', opacity: 1, offset: .3 }, { transform: 'translateY(-200%) rotate(-7deg)', opacity: 0 }], { delay: t0 + 930, duration: 900, easing: E_OUT, fill: 'both' });
+    this.pulseAt = t0 + 930;
+    this.buildGrid();
+  }
+
+  rel(el, anc) { let x = 0, y = 0; while (el && el !== anc) { x += el.offsetLeft; y += el.offsetTop; el = el.offsetParent; } return { x, y }; }
+
+  buildGrid(rebuild) {
+    const host = this.gridHostRef.current, m = this.mediaRef.current, sec = this.heroRef.current; if (!host || !m || !sec) return;
+    const W = sec.offsetWidth, H = sec.offsetHeight; if (!W || !H) return;
+    const o = this.rel(m, sec), mw = m.offsetWidth, mh = m.offsetHeight;
+    const cx = o.x + mw / 2, cy = o.y + mh / 2, S = 80;
+    const ox = ((cx % S) + S) % S, oy = ((cy % S) + S) % S;
+    let lines = '';
+    for (let x = ox; x <= W; x += S) lines += `M${x} 0V${H}`;
+    for (let y = oy; y <= H; y += S) lines += `M0 ${y}H${W}`;
+    const cells = []; let maxD = 0;
+    for (let x = ox - S; x < W; x += S) for (let y = oy - S; y < H; y += S) {
+      const d = Math.hypot((x + S / 2 - cx) / S, (y + S / 2 - cy) / S);
+      if (d > 7) continue; maxD = Math.max(maxD, d);
+      const fill = Math.random() < .3 ? `rgba(27,36,33,${(.01 + Math.random() * .04).toFixed(3)})` : 'none';
+      cells.push(`<rect data-d="${d.toFixed(2)}" x="${x + .5}" y="${y + .5}" width="${S - 1}" height="${S - 1}" fill="${fill}" style="stroke:var(--gc,#9A9D9C)" stroke-dasharray="3 4" stroke-linecap="square" opacity="0"/>`);
+    }
+    const gx = i => ox + i * S, gy = j => oy + j * S;
+    const ci = Math.round((cx - ox) / S), cj = Math.round((cy - oy) / S);
+    const Ls = [[ci - 4, cj - 3, 3, 2], [ci + 3, cj - 4, -2, 3], [ci + 4, cj + 3, -3, -2], [ci - 3, cj + 4, 2, -3]]
+      .map(([i, j, di, dj]) => `<path data-l="" d="M${gx(i)} ${gy(j)}H${gx(i + di)}V${gy(j + dj)}" fill="none" stroke="#00C0A3" stroke-width="1" stroke-linecap="round" opacity=".8"/>`).join('');
+    host.innerHTML = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" style="position:absolute;left:0;top:0"><path d="${lines}" fill="none" style="stroke:var(--gs,#DCDCDC);transition:stroke 600ms ease" stroke-width="1" stroke-dasharray="3 4" stroke-linecap="square"/><g>${cells.join('')}</g><g>${Ls}</g></svg>`;
+    const mask = `radial-gradient(ellipse ${mw * 1.1}px ${mh * 1.5}px at ${cx}px ${cy}px,#000 30%,transparent 100%)`;
+    host.style.webkitMaskImage = mask; host.style.maskImage = mask;
+    (this.lAnims || []).forEach(a => a.cancel()); this.lAnims = [];
+    if (this.reduced) return;
+    const startL = () => {
+      if (!host.isConnected) return;
+      host.querySelectorAll('[data-l]').forEach((p, i) => {
+        const L = p.getTotalLength(); p.style.strokeDasharray = `56 ${L + 56}`;
+        this.lAnims.push(p.animate([{ strokeDashoffset: 56 }, { strokeDashoffset: -L }], { duration: 5200 + i * 1300, delay: i * 1600, iterations: Infinity, easing: 'linear', fill: 'backwards' }));
+      });
+    };
+    if (rebuild || this.props.gridPulse === false) { startL(); return; }
+    setTimeout(() => {
+      host.querySelectorAll('rect[data-d]').forEach(r => r.animate([{ opacity: 0 }, { opacity: 1, offset: .3 }, { opacity: 0 }], { duration: 420, delay: +r.getAttribute('data-d') * 120, easing: 'ease-out' }));
+      setTimeout(startL, maxD * 120 + 600);
+    }, this.pulseAt || 0);
+  }
+
+  logoSpan(t) {
+    const s = document.createElement('span'); s.textContent = t;
+    s.style.cssText = 'position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;line-height:20px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#9A9D9C';
+    return s;
+  }
+  fillLogos() {
+    const g = this.logoRef.current; if (!g) return;
+    g.querySelectorAll('[data-logo-cell]').forEach((c, i) => { if (!c.firstElementChild) c.appendChild(this.logoSpan(POOL[i % POOL.length])); });
+    if (!this.poolIx) this.poolIx = g.children.length;
+  }
+  swapLogos() {
+    if (!this.vis.logo || this.reduced) return;
+    const g = this.logoRef.current; if (!g) return;
+    this.fillLogos();
+    const cells = [...g.querySelectorAll('[data-logo-cell]')], cols = this.cols || 5; this.phase ^= 1; let k = 0;
+    cells.forEach((c, i) => {
+      if (((Math.floor(i / cols) + (i % cols)) & 1) !== this.phase) return;
+      const old = c.firstElementChild, nu = this.logoSpan(POOL[this.poolIx++ % POOL.length]); c.appendChild(nu);
+      const o = { duration: 1000, delay: k++ * 100, easing: E_OUT, fill: 'both' };
+      nu.animate([{ transform: 'translateY(100%)', opacity: 0 }, { transform: 'translateY(0)', opacity: 1 }], o);
+      if (old) old.animate([{ transform: 'translateY(0)', opacity: 1 }, { transform: 'translateY(-100%)', opacity: 0 }], o).onfinish = () => old.remove();
+    });
+  }
+
+  startTech() {
+    this.techAnim && this.techAnim.cancel(); this.techAnim = null;
+    const t = this.techTrackRef.current; if (!t || this.state.q || this.reduced) return;
+    this.techAnim = t.animate([{ transform: 'translateY(0)' }, { transform: 'translateY(-50%)' }], { duration: 24000, iterations: Infinity, easing: 'linear' });
+    if (!this.vis.tech) this.techAnim.pause();
+  }
+
+  startInd() {
+    this.ringAnim && this.ringAnim.cancel(); this.ringAnim = null;
+    if (this.props.autoAdvance === false) return;
+    const c = this.rootRef.current.querySelector(`[data-ring="${this.state.ind}"]`); if (!c) return;
+    this.ringAnim = c.animate([{ strokeDashoffset: RING }, { strokeDashoffset: 0 }], { duration: 6000, easing: 'linear', fill: 'forwards' });
+    this.ringAnim.onfinish = () => this.setState(s => ({ ind: (s.ind + 1) % IND.length }));
+    this.syncRing();
+  }
+  syncRing() { const a = this.ringAnim; if (!a) return; (this.vis.ind && !this.state.indPaused) ? a.play() : a.pause(); }
+  moveInd() {
+    const bar = this.indBarRef.current, tabs = this.tabsRef.current; if (!bar || !tabs) return;
+    const b = tabs.querySelector(`[data-tab="${this.state.ind}"]`); if (!b) return;
+    bar.style.width = b.offsetWidth + 'px'; bar.style.transform = `translateX(${b.offsetLeft}px)`;
+    if (tabs.scrollWidth > tabs.clientWidth) tabs.scrollTo({ left: b.offsetLeft - 24, behavior: 'smooth' });
+  }
+
+  renderVals() {
+    const st = this.state, w = st.w;
+    const xl = w >= 1280, lg = w >= 1024, md = w >= 768;
+    this.cols = lg ? 5 : md ? 4 : 2;
+    const solid = st.scrolled || st.mOpen;
+    const ql = st.q.trim().toLowerCase();
+    const filtered = ql ? TECH.filter(t => (t.n + ' ' + t.k).toLowerCase().includes(ql)) : [...TECH, ...TECH];
+    const ind = IND[st.ind];
+    return {
+      rootRef: this.rootRef, heroRef: this.heroRef, gridHostRef: this.gridHostRef, mediaRef: this.mediaRef, heroImgRef: this.heroImgRef,
+      railRef: this.railRef, lineRef: this.lineRef, logoRef: this.logoRef, indRef: this.indRef, tabsRef: this.tabsRef, indBarRef: this.indBarRef,
+      techBoxRef: this.techBoxRef, marqueeRef: this.marqueeRef, hViewRef: this.hViewRef, hTrackRef: this.hTrackRef, hBarRef: this.hBarRef, fxRef: this.fxRef, glowRef: this.glowRef, chatTip: !!this.state.chatTip, closeTip: () => this.setState({ chatTip: false }), loaderRef: this.loaderRef, solGridRef: this.solGridRef, footRef: this.footRef, hStickyRef: this.hStickyRef, hLineRef: this.hLineRef, railRRef: this.railRRef, logos: [...LOGOS, ...LOGOS, ...LOGOS, ...LOGOS],
+      pauseMarquee: () => this.marq && this.marq.pause(), playMarquee: () => this.marq && this.vis.logo && this.marq.play(), techTrackRef: this.techTrackRef,
+      railsDisplay: this.props.showRails === false ? 'none' : 'block',
+      desk: lg, mob: !lg,
+      L: { heroH: lg ? (xl ? '750px' : '726px') : 'auto', mediaH: lg ? '540px' : '440px', logoCols: this.cols, logoH: lg ? '130px' : md ? '120px' : '96px', featH: lg ? '600px' : 'auto', stagger: xl ? '177px' : md ? '120px' : '0px' },
+      ic: { arrow: this.arrowIc(), chev: this.icon('chev', 16), msg: this.icon('msg', 20), wrench: this.icon('wrench', 18), layers: this.icon('layers', 18), mail: this.icon('mail', 16), search: this.icon('search', 16), x: this.icon('x', 14), phone: this.icon('phone', 13) },
+      hdr: (() => { const dk = st.hdrDark && !st.mOpen; return { nv: dk ? '#ffffff' : '#1B2421', lgd: dk ? 0 : 1, lgl: dk ? 1 : 0, bg: solid ? (dk ? 'rgba(11,42,36,.55)' : 'rgba(255,255,255,.62)') : 'rgba(255,255,255,0)', blur: solid ? 'blur(20px) saturate(160%)' : 'none', line: solid ? (dk ? 'rgba(255,255,255,.1)' : 'rgba(27,36,33,.1)') : 'rgba(27,36,33,0)' }; })(),
+      nav: {
+        solBg: st.menu === 'soluciones' ? (st.hdrDark && !st.mOpen ? 'rgba(255,255,255,.1)' : 'rgba(27,36,33,.05)') : 'transparent', solRot: st.menu === 'soluciones' ? '180deg' : '0deg',
+        indBg: st.menu === 'industrias' ? (st.hdrDark && !st.mOpen ? 'rgba(255,255,255,.1)' : 'rgba(27,36,33,.05)') : 'transparent', indRot: st.menu === 'industrias' ? '180deg' : '0deg'
+      },
+      burger: this.icon(st.mOpen ? 'x' : 'menu', 22),
+      menuSol: lg && st.menu === 'soluciones', menuInd: lg && st.menu === 'industrias', backdrop: lg && !!st.menu,
+      openSol: () => this.setState({ menu: 'soluciones' }),
+      openInd: () => this.setState({ menu: 'industrias' }),
+      closeMenu: () => { if (!st.lock && st.menu) this.setState({ menu: null }); },
+      mobileMenu: !lg && st.mOpen,
+      toggleMobile: () => this.setState(s => ({ mOpen: !s.mOpen })),
+      mm: {
+        solRows: st.mAcc === 'sol' ? '1fr' : '0fr', solRot: st.mAcc === 'sol' ? '180deg' : '0deg',
+        indRows: st.mAcc === 'ind' ? '1fr' : '0fr', indRot: st.mAcc === 'ind' ? '180deg' : '0deg'
+      },
+      accSol: () => this.setState(s => ({ mAcc: s.mAcc === 'sol' ? null : 'sol' })),
+      accInd: () => this.setState(s => ({ mAcc: s.mAcc === 'ind' ? null : 'ind' })),
+      pauseIcon: this.icon(st.paused ? 'play' : 'pause', 14), pauseLabel: st.paused ? 'Reproducir video' : 'Pausar video',
+      togglePause: () => { const p = !st.paused, v = this.heroImgRef.current; if (v) { if (p) v.pause(); else { const pl = v.play(); if (pl && pl.catch) pl.catch(() => {}); } } this.setState({ paused: p }); },
+      logoCells: Array.from({ length: this.cols * 2 }, (_, i) => i),
+      solutions: SOL.map(s => ({ ...s, iconSm: this.icon(s.ic, 18), icon: this.icon(s.ic, 20) })),
+      mix: MIX.map(m => ({ ...m, bg: m.on ? '#00C0A3' : '#DCDCDC', x: m.on ? '14px' : '2px', ink: m.on ? '#1B2421' : '#9A9D9C' })),
+      industries: IND.map((d, i) => ({
+        ...d, iconSm: this.icon(d.ic, 18),
+        color: i === st.ind ? '#ffffff' : '#9A9D9C', ringOp: i === st.ind ? 1 : 0, pauseOp: i === st.ind && st.indPaused ? 1 : 0, op: i === st.ind ? 1 : 0,
+        pick: () => this.setState({ ind: i, menu: st.lock ? st.menu : null }),
+        pickClose: () => this.setState({ ind: i, mOpen: false })
+      })),
+      act: { ...ind, icon: this.icon(ind.ic, 28) },
+      indPause: () => this.setState({ indPaused: true }), indPlay: () => this.setState({ indPaused: false }),
+      techs: TECH.map(t => ({ ...t, icon: this.icon(t.ic, 14) })), q: st.q, onQ: e => this.setState({ q: e.target.value }),
+      techRows: filtered, techEmpty: filtered.length === 0,
+      countriesOp: OP.map(c => ({ ...c, flag: `https://flagcdn.com/${c.c}.svg` })),
+      countriesExp: EXP.map(c => ({ ...c, flag: `https://flagcdn.com/${c.c}.svg` }))
+    };
+  }
+}
+</script>
+</body>
+</html>
