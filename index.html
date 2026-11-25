@@ -36,7 +36,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #00C0A3;outline-offset:2p
   <div ref="{{ fxRef }}" aria-hidden="true" style="position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:4"></div>
 
   <header onMouseLeave="{{ closeMega }}" style="position:fixed;top:calc(clamp(10px,1.4vw,20px) + 12px);left:0;right:0;z-index:50;padding:0 calc(clamp(10px,1.4vw,20px) + 12px);color:{{ hdr.fg }};transition:color 300ms ease">
-    <div style="max-width:1360px;margin:0 auto;height:{{ hdrSz.h }};padding:0 {{ hdrSz.pr }} 0 {{ hdrSz.pl }};box-sizing:border-box;display:flex;align-items:center;gap:{{ hdrSz.gap }};border-radius:999px;background:{{ hdr.pill }};backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);box-shadow:{{ hdr.shadow }};transition:background-color 300ms ease,box-shadow 300ms ease">
+    <div style="margin:0 auto;height:{{ hdrSz.h }};padding:0 {{ hdrSz.pr }} 0 {{ hdrSz.pl }};box-sizing:border-box;display:flex;align-items:center;gap:{{ hdrSz.gap }};border-radius:999px;background:{{ hdr.pill }};backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);box-shadow:{{ hdr.shadow }};transition:background-color 300ms ease,box-shadow 300ms ease">
       <a href="#top" aria-label="Enerfrost" style="position:relative;display:block;flex:none;color:inherit">
         <img src="assets/logo-a6.png" alt="Enerfrost" style="height:{{ hdrSz.logo }};width:auto;display:block;opacity:{{ hdr.logoD }};transition:opacity 300ms ease">
         <img src="assets/logo-a4.png" alt="" style="position:absolute;left:0;top:0;height:{{ hdrSz.logo }};width:auto;opacity:{{ hdr.logoL }};transition:opacity 300ms ease">
@@ -78,7 +78,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #00C0A3;outline-offset:2p
 
     <sc-if value="{{ megaSol }}" hint-placeholder-val="{{ false }}">
       <div aria-hidden="true" style="position:absolute;left:0;right:0;top:56px;height:28px"></div>
-      <div style="position:absolute;left:calc(clamp(10px,1.4vw,20px) + 12px);right:calc(clamp(10px,1.4vw,20px) + 12px);max-width:1360px;margin:0 auto;top:76px;background:#ffffff;color:#1B2421;border-radius:28px;overflow:hidden;box-shadow:0 0 0 8px #E4E8E6,0 30px 60px -20px rgba(11,42,36,.35)">
+      <div style="position:absolute;left:calc(clamp(10px,1.4vw,20px) + 12px);right:calc(clamp(10px,1.4vw,20px) + 12px);margin:0 auto;top:76px;background:#ffffff;color:#1B2421;border-radius:28px;overflow:hidden;box-shadow:0 0 0 8px #E4E8E6,0 30px 60px -20px rgba(11,42,36,.35)">
         <div style="max-width:1440px;margin:0 auto;padding:28px var(--gut) 24px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px">
           <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#686666">Soluciones de energía</span>
           <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px">
@@ -110,7 +110,7 @@ button:focus-visible,a:focus-visible{outline:2px solid #00C0A3;outline-offset:2p
 
     <sc-if value="{{ megaInd }}" hint-placeholder-val="{{ false }}">
       <div aria-hidden="true" style="position:absolute;left:0;right:0;top:56px;height:28px"></div>
-      <div style="position:absolute;left:calc(clamp(10px,1.4vw,20px) + 12px);right:calc(clamp(10px,1.4vw,20px) + 12px);max-width:1360px;margin:0 auto;top:76px;background:#ffffff;color:#1B2421;border-radius:28px;overflow:hidden;box-shadow:0 0 0 8px #E4E8E6,0 30px 60px -20px rgba(11,42,36,.35)">
+      <div style="position:absolute;left:calc(clamp(10px,1.4vw,20px) + 12px);right:calc(clamp(10px,1.4vw,20px) + 12px);margin:0 auto;top:76px;background:#ffffff;color:#1B2421;border-radius:28px;overflow:hidden;box-shadow:0 0 0 8px #E4E8E6,0 30px 60px -20px rgba(11,42,36,.35)">
         <div style="max-width:1440px;margin:0 auto;padding:28px var(--gut) 24px;box-sizing:border-box;display:flex;flex-direction:column;gap:20px">
           <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:#686666">Industrias</span>
           <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px">
