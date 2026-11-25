@@ -1,0 +1,20 @@
+Enerfrost · Home (Propuesta C)
+
+Contenido
+- index.html   Página
+- support.js   Motor de render (requerido, mismo directorio que index.html)
+- assets/      Logos y fotografías
+
+Publicación
+Subir la carpeta completa a cualquier hosting estático (Netlify, Vercel, S3, Apache/Nginx). No requiere build.
+Debe servirse por http(s); abrir index.html con doble clic (file://) puede bloquear scripts en algunos navegadores.
+
+Dependencias externas (CDN)
+- Google Fonts: Rubik, IBM Plex Mono
+- Banderas: flagcdn.com
+
+Pendientes de contenido
+- Textos [entre corchetes] (bajadas de soluciones e industrias, teléfonos, correo)
+- Logos de clientes y partners
+- Envío real del formulario (hoy solo muestra el estado "Solicitud recibida")
+- Enlaces de redes sociales
